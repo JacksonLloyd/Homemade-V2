@@ -7,3 +7,23 @@
 //
 
 import Foundation
+
+class ShoppingList{
+    //var recipeID:String
+    var recipeName:String
+    var ingredients:[String]?
+    
+    init(recipeName:String, ingredients:[String]?){
+        self.recipeName = recipeName
+        self.ingredients = ingredients
+    }
+    
+    init?(recipeName:String, ingredients:[String]){
+        if recipeName.isEmpty{
+            return nil
+        }
+        
+        self.recipeName = recipeName
+        self.ingredients = ingredients
+    }
+}

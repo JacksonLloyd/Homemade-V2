@@ -18,7 +18,7 @@ struct AllRecipes{
         recipes = Recipe.getRecipes()
     }
     
-    mutating func recipeOrder() -> [Recipe]
+    mutating func Recipes() -> [Recipe]
     {
         recipes = Recipe.getRecipes()
         return recipes

@@ -26,7 +26,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBOutlet weak var placeHolder: UIView!
     
-    let recipes = Model.sharedInstance.allRecipes.recipeOrder()//["meal1", "meal2", "meal3", "meal4", "meal5"]
+    let recipes = Model.sharedInstance.allRecipes.Recipes()//["meal1", "meal2", "meal3", "meal4", "meal5"]
    
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -43,14 +43,20 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         //puts image to the back
         cell.mealImage.layer.zPosition = -5;
         
-        /* add gradient over image
-        cell.mealImage.image = imageWithGradient(img: cell.mealImage.image)*/
+        /* add gradient over image*/
+        cell.mealImage.image = imageWithGradient(img: cell.mealImage.image)
         return(cell)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableIndex = indexPath.row
-        performSegue(withIdentifier: "segue", sender: self)
+        performSegue(withIdentifier: "featureToMealSegue", sender: self)
+    }
+    @IBAction func unwindToFeature(segue:UIStoryboardSegue){
+        
+    }
+    @IBAction func unwindToMeal(segue:UIStoryboardSegue){
+        
     }
     
     override func viewDidLoad() {

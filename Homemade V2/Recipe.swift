@@ -31,7 +31,20 @@ enum Recipe:Int
             return nil
         }
     }
-
+    
+    var id:String
+    {
+        get
+        {
+            switch self
+            {
+            case .recipe1: return "m01"
+            case .recipe2: return "m02"
+            case .recipe3: return "m03"
+            default: return "m00"
+            }
+        }
+    }
     
     var name:String
     {
@@ -51,7 +64,12 @@ enum Recipe:Int
     {
         get
         {
-            return self.name.replacingOccurrences(of: " ", with: "")
+            if self.name != "" {
+                return self.name.replacingOccurrences(of: " ", with: "")
+            }
+            else{
+                return "defaultMealPic"
+            }
         }
     }
     

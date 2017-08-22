@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0905EE301F4C5D99003BF228 /* MealSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0905EE2F1F4C5D99003BF228 /* MealSceneController.swift */; };
+		0905EE321F4C76A4003BF228 /* AllShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0905EE311F4C76A4003BF228 /* AllShoppingList.swift */; };
 		094FFF631F4A79CE004866BC /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094FFF621F4A79CE004866BC /* Recipe.swift */; };
 		094FFF651F4A79FF004866BC /* ShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094FFF641F4A79FF004866BC /* ShoppingList.swift */; };
 		094FFF671F4A7A11004866BC /* Favourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094FFF661F4A7A11004866BC /* Favourites.swift */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0905EE2F1F4C5D99003BF228 /* MealSceneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealSceneController.swift; sourceTree = "<group>"; };
+		0905EE311F4C76A4003BF228 /* AllShoppingList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllShoppingList.swift; sourceTree = "<group>"; };
 		094FFF621F4A79CE004866BC /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		094FFF641F4A79FF004866BC /* ShoppingList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingList.swift; sourceTree = "<group>"; };
 		094FFF661F4A7A11004866BC /* Favourites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favourites.swift; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 				094FFF661F4A7A11004866BC /* Favourites.swift */,
 				094FFF6A1F4A9B9E004866BC /* Model.swift */,
 				094FFF6C1F4AB5DE004866BC /* AllRecipes.swift */,
+				0905EE311F4C76A4003BF228 /* AllShoppingList.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 				7D6F0BCB1F414FA3003F60BE /* FirstViewController.swift */,
 				7D6F0BCD1F414FA3003F60BE /* SecondViewController.swift */,
 				7D6F0BF91F4152A8003F60BE /* FirstViewControllerTableViewCell.swift */,
+				0905EE2F1F4C5D99003BF228 /* MealSceneController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -318,7 +324,9 @@
 				7D04C0E61F4C36CA00C8EC11 /* RecipeViewController.swift in Sources */,
 				094FFF6B1F4A9B9E004866BC /* Model.swift in Sources */,
 				7D6F0BCE1F414FA3003F60BE /* SecondViewController.swift in Sources */,
+				0905EE321F4C76A4003BF228 /* AllShoppingList.swift in Sources */,
 				7D6F0BCA1F414FA3003F60BE /* AppDelegate.swift in Sources */,
+				0905EE301F4C5D99003BF228 /* MealSceneController.swift in Sources */,
 				7D6F0BCC1F414FA3003F60BE /* FirstViewController.swift in Sources */,
 				7D6F0BFA1F4152A8003F60BE /* FirstViewControllerTableViewCell.swift in Sources */,
 			);

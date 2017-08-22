@@ -49,5 +49,69 @@
             endingLineNumber = "15">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Homemade V2/ShoppingList.swift"
+            timestampString = "525110369.757489"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "ShoppingList"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Homemade_V2.ShoppingList.recipeName.getter : Swift.String"
+                  moduleName = "Homemade V2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jacksonlloyd/Desktop/iPhone/iPhone%20Assignment/Homemade%20V2/Homemade%20V2/ShoppingList.swift"
+                  timestampString = "525113613.971478"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "41">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Homemade_V2.ShoppingList.recipeName.setter : Swift.String"
+                  moduleName = "Homemade V2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jacksonlloyd/Desktop/iPhone/iPhone%20Assignment/Homemade%20V2/Homemade%20V2/ShoppingList.swift"
+                  timestampString = "525113613.973363"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "85">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Homemade V2/MealSceneController.swift"
+            timestampString = "525113486.504344"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

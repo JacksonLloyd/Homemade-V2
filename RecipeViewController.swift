@@ -15,7 +15,7 @@ class RecipeViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     
     var model = Model.sharedInstance
-    let recipes = Model.sharedInstance.allRecipes.recipeOrder()
+    let recipes = Model.sharedInstance.allRecipes.Recipes()
     
 
 
@@ -34,7 +34,14 @@ class RecipeViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func unwindToFeature(segue:UIStoryboardSegue){
+        
+    }
 
+    @IBAction func backPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "unwindSegueToFeature", sender: self)
+    }
     /*
     // MARK: - Navigation
 
