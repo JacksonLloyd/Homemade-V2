@@ -8,6 +8,8 @@
 
 import UIKit
 
+var tableIndex = 0
+
 protocol Refresh
 {
     func refresh(recipe:Recipe)
@@ -25,7 +27,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var placeHolder: UIView!
     
     let recipes = Model.sharedInstance.allRecipes.recipeOrder()//["meal1", "meal2", "meal3", "meal4", "meal5"]
-    var index = 0
+   
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return (recipes.count)
@@ -47,7 +49,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        index = indexPath.row
+        tableIndex = indexPath.row
         performSegue(withIdentifier: "segue", sender: self)
     }
     
