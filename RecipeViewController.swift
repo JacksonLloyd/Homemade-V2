@@ -15,6 +15,10 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addToShoppingListButton: UIButton!
+    
+    // UIColor for addToShoppingListButton
+    let borderColor = UIColor(red: 0, green: 191/255, blue: 165/255, alpha: 1)
     
     // retunrs number of rows to display in table
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -34,6 +38,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         nameLabel.text = recipes[tableIndex].name
         recipeImage.image = UIImage(named: recipes[tableIndex].imageName)
+        addToShoppingListButton.layer.borderColor = borderColor.cgColor
         
         tableView.backgroundView = nil;
         // reloads table data
@@ -41,6 +46,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
             super.viewDidAppear(animated)
             tableView.reloadData()
         }
+
     }
 
     override func didReceiveMemoryWarning() {
