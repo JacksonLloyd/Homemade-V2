@@ -79,9 +79,9 @@ enum Recipe:Int
         {
             switch self
             {
-            case .recipe1: return ["flour", "egg"]
-            case .recipe2: return ["bread", "ham", "cheese"]
-            case .recipe3: return ["pasta", "meat sauce"]
+            case .recipe1: return ["10g flour", "2 eggs", "250ml milk", "1 cup of water", "500g of diced bacon (preferably rindless bacon"]
+            case .recipe2: return ["1 tablespoon of sriracha", "2 limes, zested and juices", "2 bunches of broccolini, ends trimmed", "4 salmon fillets"]
+            case .recipe3: return ["200g dried rice noodles", "1 tablespoon of peanut oil", "500g of turkey mince"]
             default: return ["yogurt", "oats"]
             }
         }

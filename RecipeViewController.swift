@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class RecipeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -15,17 +16,15 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-//    var model = Model.sharedInstance
-//    let recipes = Model.sharedInstance.allRecipes.Recipes()
-    
-    // number of rows to display in table
+    // retunrs number of rows to display in table
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return (recipes[tableIndex].ingredients!.count)
     }
     
-    
+    // returns cell in tableView of ingredients to be displayed
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientCell", for: indexPath) as! RecipeTableViewCell
+        
          cell.ingredientLabel.text = recipes[tableIndex].ingredients?[indexPath.row]
         
         return cell
@@ -35,33 +34,27 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         nameLabel.text = recipes[tableIndex].name
         recipeImage.image = UIImage(named: recipes[tableIndex].imageName)
+        
+        tableView.backgroundView = nil;
+        // reloads table data
         func viewDidAppear(animated: Bool) {
             super.viewDidAppear(animated)
             tableView.reloadData()
         }
     }
- 
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    // back button to feature view
     @IBAction func unwindToFeature(segue:UIStoryboardSegue){
     }
-
-    @IBAction func backPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "unwindSegueToFeature", sender: self)
-    }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // view directions button (Action) - opens recipe sourceURL in Safari
+    @IBAction func directionsButton(_ sender: Any) {
+        let svc = SFSafariViewController(url: URL(string: recipes[tableIndex].sourceURL)!)
+        self.present(svc, animated: true, completion: nil)
     }
-    */
-
 }

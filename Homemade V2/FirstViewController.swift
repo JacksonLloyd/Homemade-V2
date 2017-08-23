@@ -8,9 +8,11 @@
 
 import UIKit
 
+// initialised outside of class so that RecipeViewController can access
+// Property referencing the model for managing data and business logic
 var tableIndex = 0
-var model = Model.sharedInstance
-let recipes = Model.sharedInstance.allRecipes.Recipes()//["meal1", "meal2", "meal3", "meal4", "meal5"]
+let model = Model.sharedInstance
+let recipes = Model.sharedInstance.allRecipes.Recipes()
 
 protocol Refresh
 {
@@ -21,24 +23,19 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     // Property referencing the label in the view
     @IBOutlet weak var lblAnswers: UILabel!
-    
     @IBOutlet weak var imgCard: UIImageView!
-    // Property referencing the model for managing data and business logic
-   
-    
     @IBOutlet weak var placeHolder: UIView!
-    
-    
-   
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return (recipes.count)
     }
     
+    // returns cell in tableView of recipes
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FirstViewControllerTableViewCell
         
+        //assign label and image
         cell.mealLabel.text = recipes[indexPath.row].name
         cell.mealImage.image = UIImage(named: (recipes[indexPath.row].name))
         
@@ -50,6 +47,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         return(cell)
     }
     
+    // segue to MealSceneController for table row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableIndex = indexPath.row
         performSegue(withIdentifier: "featureToMealSegue", sender: self)
