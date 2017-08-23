@@ -9,6 +9,8 @@
 import UIKit
 
 var tableIndex = 0
+var model = Model.sharedInstance
+let recipes = Model.sharedInstance.allRecipes.Recipes()//["meal1", "meal2", "meal3", "meal4", "meal5"]
 
 protocol Refresh
 {
@@ -22,11 +24,11 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @IBOutlet weak var imgCard: UIImageView!
     // Property referencing the model for managing data and business logic
-    var model = Model.sharedInstance
+   
     
     @IBOutlet weak var placeHolder: UIView!
     
-    let recipes = Model.sharedInstance.allRecipes.Recipes()//["meal1", "meal2", "meal3", "meal4", "meal5"]
+    
    
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{

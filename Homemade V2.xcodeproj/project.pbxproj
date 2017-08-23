@@ -17,6 +17,7 @@
 		7D04C0E61F4C36CA00C8EC11 /* RecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D04C0E51F4C36CA00C8EC11 /* RecipeViewController.swift */; };
 		7D0EDF861F43E01A0016471D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D0EDF851F43E01A0016471D /* Assets.xcassets */; };
 		7D0EDF8A1F4403B10016471D /* func.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0EDF891F4403B10016471D /* func.swift */; };
+		7D1AB5C11F4CF9740027389B /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1AB5C01F4CF9740027389B /* RecipeTableViewCell.swift */; };
 		7D6F0BCA1F414FA3003F60BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6F0BC91F414FA3003F60BE /* AppDelegate.swift */; };
 		7D6F0BCC1F414FA3003F60BE /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6F0BCB1F414FA3003F60BE /* FirstViewController.swift */; };
 		7D6F0BCE1F414FA3003F60BE /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D6F0BCD1F414FA3003F60BE /* SecondViewController.swift */; };
@@ -55,6 +56,7 @@
 		7D04C0E51F4C36CA00C8EC11 /* RecipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecipeViewController.swift; path = ../RecipeViewController.swift; sourceTree = "<group>"; };
 		7D0EDF851F43E01A0016471D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D0EDF891F4403B10016471D /* func.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = func.swift; path = ../func.swift; sourceTree = "<group>"; };
+		7D1AB5C01F4CF9740027389B /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		7D6F0BC61F414FA3003F60BE /* Homemade V2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Homemade V2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D6F0BC91F414FA3003F60BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D6F0BCB1F414FA3003F60BE /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				7D04C0E51F4C36CA00C8EC11 /* RecipeViewController.swift */,
 				7D6F0BCB1F414FA3003F60BE /* FirstViewController.swift */,
+				7D1AB5C01F4CF9740027389B /* RecipeTableViewCell.swift */,
 				7D6F0BCD1F414FA3003F60BE /* SecondViewController.swift */,
 				7D6F0BF91F4152A8003F60BE /* FirstViewControllerTableViewCell.swift */,
 				0905EE2F1F4C5D99003BF228 /* MealSceneController.swift */,
@@ -319,6 +322,7 @@
 				7D0EDF8A1F4403B10016471D /* func.swift in Sources */,
 				094FFF6D1F4AB5DE004866BC /* AllRecipes.swift in Sources */,
 				094FFF631F4A79CE004866BC /* Recipe.swift in Sources */,
+				7D1AB5C11F4CF9740027389B /* RecipeTableViewCell.swift in Sources */,
 				094FFF651F4A79FF004866BC /* ShoppingList.swift in Sources */,
 				094FFF671F4A7A11004866BC /* Favourites.swift in Sources */,
 				7D04C0E61F4C36CA00C8EC11 /* RecipeViewController.swift in Sources */,

@@ -12,11 +12,17 @@ import UIKit
 class MealSceneController: UIViewController{
     @IBOutlet weak var Placeholder: UIView!
     @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var mealImage: UIImageView!
+    
+    
     var swiped = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        mealImage.image = UIImage(named: recipes[tableIndex].imageName)
+
         
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction(swipe:)))
         swipeUp.direction = UISwipeGestureRecognizerDirection.up
