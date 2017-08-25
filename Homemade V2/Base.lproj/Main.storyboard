@@ -137,12 +137,23 @@
                                             <constraint firstAttribute="width" secondItem="ao3-fE-uvk" secondAttribute="height" multiplier="15:7" id="SBf-U6-75s"/>
                                         </constraints>
                                     </imageView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uj8-Di-42N">
-                                        <rect key="frame" x="0.0" y="291" width="375" height="262"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" delaysContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uj8-Di-42N">
+                                        <rect key="frame" x="0.0" y="291" width="375" height="318"/>
                                         <color key="backgroundColor" red="1" green="0.92156862745098034" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="262" id="cvf-Xe-Kz5"/>
+                                            <constraint firstAttribute="height" constant="318" id="cvf-Xe-Kz5"/>
                                         </constraints>
+                                        <button key="tableFooterView" opaque="NO" clipsSubviews="YES" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="e57-Pb-VTx">
+                                            <rect key="frame" x="0.0" y="72" width="375" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.69803921568627447" green="0.87450980392156863" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
+                                            <state key="normal" title="Add To Shopping List">
+                                                <color key="titleColor" red="0.0" green="0.74901960784313726" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="3"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </button>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ingredientCell" id="ZCR-7R-Emx" customClass="RecipeTableViewCell" customModule="Homemade_V2" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -151,7 +162,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LYu-0z-rpH">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LYu-0z-rpH">
                                                             <rect key="frame" x="28" y="8" width="334" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -217,16 +228,6 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e57-Pb-VTx">
-                                        <rect key="frame" x="19" y="561" width="337" height="40"/>
-                                        <color key="backgroundColor" red="0.69803921568627447" green="0.87450980392156863" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Add To Shopping List">
-                                            <color key="titleColor" red="0.0" green="0.74901960784313726" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="3"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aBa-vE-ymE">
                                         <rect key="frame" x="0.0" y="255" width="375" height="39"/>
                                         <subviews>
@@ -248,12 +249,9 @@
                                     <constraint firstItem="2oY-Ig-ocv" firstAttribute="leading" secondItem="ao3-fE-uvk" secondAttribute="leading" id="44h-sq-5cS"/>
                                     <constraint firstAttribute="trailing" secondItem="ao3-fE-uvk" secondAttribute="trailing" id="8CS-Ww-JMI"/>
                                     <constraint firstAttribute="bottom" secondItem="aBa-vE-ymE" secondAttribute="bottom" constant="373" id="8by-zP-MlY"/>
-                                    <constraint firstItem="e57-Pb-VTx" firstAttribute="leading" secondItem="fqy-lK-jPS" secondAttribute="leading" constant="19" id="9wA-cz-UO0"/>
                                     <constraint firstItem="2oY-Ig-ocv" firstAttribute="top" secondItem="X0R-Jz-5pi" secondAttribute="bottom" constant="8" symbolic="YES" id="KQz-Bl-VGp"/>
                                     <constraint firstItem="2oY-Ig-ocv" firstAttribute="trailing" secondItem="aBa-vE-ymE" secondAttribute="trailing" id="R2A-Nr-BUg"/>
-                                    <constraint firstItem="9rL-Wr-2h3" firstAttribute="top" secondItem="e57-Pb-VTx" secondAttribute="bottom" constant="8" symbolic="YES" id="bJk-Bu-WKo"/>
-                                    <constraint firstItem="2oY-Ig-ocv" firstAttribute="centerX" secondItem="e57-Pb-VTx" secondAttribute="centerX" id="cof-qR-Qcy"/>
-                                    <constraint firstAttribute="bottom" secondItem="uj8-Di-42N" secondAttribute="bottom" constant="114" id="fzU-mF-586"/>
+                                    <constraint firstAttribute="bottom" secondItem="uj8-Di-42N" secondAttribute="bottom" constant="58" id="fzU-mF-586"/>
                                     <constraint firstItem="X0R-Jz-5pi" firstAttribute="top" secondItem="y8K-Hd-OIE" secondAttribute="bottom" constant="82" id="hVZ-t1-foJ"/>
                                     <constraint firstItem="uj8-Di-42N" firstAttribute="top" secondItem="2oY-Ig-ocv" secondAttribute="bottom" constant="35" id="j4R-z8-1xg"/>
                                     <constraint firstItem="aBa-vE-ymE" firstAttribute="top" secondItem="ao3-fE-uvk" secondAttribute="bottom" constant="80" id="noc-xO-H1G"/>
@@ -262,7 +260,6 @@
                                     <constraint firstItem="ao3-fE-uvk" firstAttribute="trailing" secondItem="9rL-Wr-2h3" secondAttribute="trailing" id="pk9-eF-MUQ"/>
                                     <constraint firstItem="ao3-fE-uvk" firstAttribute="leading" secondItem="9rL-Wr-2h3" secondAttribute="leading" id="t8C-2s-Inm"/>
                                     <constraint firstItem="X0R-Jz-5pi" firstAttribute="leading" secondItem="y8K-Hd-OIE" secondAttribute="leading" id="tQN-sB-bCB"/>
-                                    <constraint firstItem="e57-Pb-VTx" firstAttribute="top" secondItem="uj8-Di-42N" secondAttribute="bottom" constant="8" symbolic="YES" id="u2e-2K-9ra"/>
                                     <constraint firstItem="ao3-fE-uvk" firstAttribute="leading" secondItem="fqy-lK-jPS" secondAttribute="leading" id="uTl-O5-zFH"/>
                                     <constraint firstItem="ao3-fE-uvk" firstAttribute="trailing" secondItem="uj8-Di-42N" secondAttribute="trailing" id="w9h-iJ-PRs"/>
                                     <constraint firstItem="X0R-Jz-5pi" firstAttribute="leading" secondItem="fqy-lK-jPS" secondAttribute="leading" constant="17" id="xBe-6T-TOf"/>
@@ -653,7 +650,7 @@
         <image name="skill_level " width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7e5-Gn-gYl"/>
         <segue reference="vfG-Nb-uAr"/>
+        <segue reference="7e5-Gn-gYl"/>
     </inferredMetricsTieBreakers>
 </document>

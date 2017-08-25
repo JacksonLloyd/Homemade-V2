@@ -38,6 +38,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         nameLabel.text = recipes[tableIndex].name
         recipeImage.image = UIImage(named: recipes[tableIndex].imageName)
+        recipeImage.image = imageWithGradient(img: recipeImage.image)
         addToShoppingListButton.layer.borderColor = borderColor.cgColor
         
         tableView.backgroundView = nil;
