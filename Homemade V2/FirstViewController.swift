@@ -62,6 +62,15 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+//        self.navigationItem.hidesBackButton = true
+//        let backButton = UIBarButtonItem(image: UIImage(named: "backButton"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(FirstViewController.back))
+//        self.navigationItem.leftBarButtonItem = backButton
+//        self.automaticallyAdjustsScrollViewInsets = true
+    }
+    
+    func back(){
+        self.navigationController?.popViewController(animated: true)
     }
 
     override func didReceiveMemoryWarning() {

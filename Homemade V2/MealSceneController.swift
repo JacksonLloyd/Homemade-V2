@@ -35,7 +35,14 @@ class MealSceneController: UIViewController{
         }*/
         
         self.view.addGestureRecognizer(swipeUp)
-        
+        self.navigationItem.hidesBackButton = true
+        let backButton = UIBarButtonItem(image: UIImage(named: "backButton"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(MealSceneController.back(sender:)))
+        self.navigationItem.leftBarButtonItem = backButton
+        self.automaticallyAdjustsScrollViewInsets = true
+    }
+    
+    func back(sender: UIBarButtonItem){
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func didReceiveMemoryWarning() {
