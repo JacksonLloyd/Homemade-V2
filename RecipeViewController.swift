@@ -15,23 +15,25 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var addToShoppingListButton: UIButton!
-    
-    // UIColor for addToShoppingListButton
-    let borderColor = UIColor(red: 0, green: 191/255, blue: 165/255, alpha: 1)
     
     // retunrs number of rows to display in table
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return (recipes[tableIndex].ingredients!.count)
+        return (recipes[tableIndex].ingredients!.count+1)
     }
     
     // returns cell in tableView of ingredients to be displayed
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientCell", for: indexPath) as! RecipeTableViewCell
-        
-         cell.ingredientLabel.text = recipes[tableIndex].ingredients?[indexPath.row]
-        
-        return cell
+        if (indexPath.item == recipes[tableIndex].ingredients!.count) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingListCell", for: indexPath) as! RecipeShoppingButtonTableViewCell
+            return cell
+
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientCell", for: indexPath) as! RecipeTableViewCell
+            print(indexPath.row)
+            cell.ingredientLabel.text = recipes[tableIndex].ingredients?[indexPath.row]
+            return cell
+
+        }
     }
 
     override func viewDidLoad() {
@@ -39,7 +41,6 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         nameLabel.text = recipes[tableIndex].name
         recipeImage.image = UIImage(named: recipes[tableIndex].imageName)
         recipeImage.image = imageWithGradient(img: recipeImage.image)
-        addToShoppingListButton.layer.borderColor = borderColor.cgColor
         
         tableView.backgroundView = nil;
         // reloads table data
