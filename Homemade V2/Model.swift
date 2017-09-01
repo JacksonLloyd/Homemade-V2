@@ -13,6 +13,7 @@ class Model
     var startingRecipe = Recipe.recipe1;
     var allRecipes:AllRecipes
     var allShoppingList:AllShoppingList
+    var allFavourites:AllRecipes
     
     /* Here we use a Struct to hold the instance of the model i.e itself*/
     private struct Static
@@ -35,6 +36,7 @@ class Model
     {
         allRecipes = AllRecipes()
         allShoppingList = AllShoppingList()
+        allFavourites = AllRecipes()
     }
     
     

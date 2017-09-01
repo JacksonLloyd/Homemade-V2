@@ -129,6 +129,20 @@ enum Recipe:Int
         }
     }
     
+    var favourite:Bool
+    {
+        get
+        {
+            switch self
+            {
+            case .recipe1: return true
+            case .recipe2: return false
+            case .recipe3: return true
+            default: return false
+            }
+        }
+    }
+    
     static func getRecipes() ->[Recipe]
     {
         return [recipe1, recipe2, recipe3]

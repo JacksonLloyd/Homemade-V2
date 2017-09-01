@@ -49,7 +49,14 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
             super.viewDidAppear(animated)
             tableView.reloadData()
         }
-
+        self.navigationItem.hidesBackButton = true
+        let backButton = UIBarButtonItem(image: UIImage(named: "backButton"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(RecipeViewController.back(sender:)))
+        self.navigationItem.leftBarButtonItem = backButton
+        self.automaticallyAdjustsScrollViewInsets = true
+    }
+    
+    func back(sender: UIBarButtonItem){
+        self.navigationController?.popViewController(animated: true)
     }
 
     override func didReceiveMemoryWarning() {

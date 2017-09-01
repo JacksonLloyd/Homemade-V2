@@ -8,19 +8,34 @@
 
 import Foundation
 
-/*struct Favourites {
-    var favs:[Recipe]?
-    
-    static func getFavourites() ->[Recipe]{
-        return favs
-    }
-    func addFavourites() ->[Recipe]{
-        favs.append("")
-    }
-    func removeFavourites() ->[Recipe]{
-        return favs
-    }
-    
-}*/
+struct Favourites {
+//    var favourites:[Recipe]?
+//    
+//    init()
+//    {
+//        // Create an array populate with one of each recipe
+//        favourites = Favourites.getFavourites()
+//    }
+//    
+//    mutating func getFavourites() -> [Recipe]
+//    {
+//        for fave in recipes {
+//            if fave.favourite == true {
+//                favourites?.append(fave)
+//            }
+//            else {
+//                continue
+//            }
+//        }
+//    return favourites!
+//    }
+//    
+//    func addFavourites() ->[Recipe]{
+//        favourites!.append("")
+//    }
+//    func removeFavourites() ->[Recipe]{
+//        return favourites!
+//    }
+}
 
 
