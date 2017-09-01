@@ -35,7 +35,7 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
     // returns cell in tableView of recipes
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FirstViewControllerTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "favouritesCell", for: indexPath) as! FavouritesCell
         
         //assign label and image
         cell.mealLabel.text = favourites[indexPath.row].name
@@ -52,7 +52,7 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
     // segue to MealSceneController for table row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         faveIndex = indexPath.row
-        performSegue(withIdentifier: "featureToMealSegue", sender: self)
+        //performSegue(withIdentifier: "featureToMealSegue", sender: self)
     }
     
     override func viewDidLoad() {
