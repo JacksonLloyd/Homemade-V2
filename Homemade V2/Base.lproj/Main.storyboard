@@ -725,7 +725,7 @@
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="y7R-2p-TSO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="y7R-2p-TSO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -744,7 +744,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mov-sb-vSr" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Skill Level" image="skill_level " id="cPa-gy-q4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="48j-Wr-OCy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="48j-Wr-OCy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -763,7 +763,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8bE-eE-UQz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="FBD-TJ-6gZ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="B6r-zJ-VeL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="B6r-zJ-VeL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
