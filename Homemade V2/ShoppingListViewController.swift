@@ -21,6 +21,8 @@ class ShoppingListViewController: UIViewController, UITableViewDataSource, UITab
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        // set the section header height
+        self.tableView.estimatedSectionHeaderHeight = 10
         // Do any additional setup after loading the view.
     }
     
@@ -32,11 +34,15 @@ class ShoppingListViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (shoppingList.getShoppingList()![section].ingredients!.count)
+        let sections = shoppingList.getShoppingList()![section].ingredients!.count
+        return sections
     }
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let title = shoppingList.getShoppingList()?[section].recipeName
-        return title
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerCell = tableView.dequeueReusableCell(withIdentifier: "sectionHeaderCell") as! ShoppingListSectionTableViewCell
+        headerCell.sectionLabel.text = shoppingList.getShoppingList()?[section].recipeName
+        headerCell.shoppingListDeleteButton.tag = section
+        return headerCell
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -47,6 +53,11 @@ class ShoppingListViewController: UIViewController, UITableViewDataSource, UITab
         let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingIngredientCell", for: indexPath) as! ShoppingListTableViewCell
         cell.shoppingIngredientLabel.text = shoppingList.getShoppingList()![indexPath.section].ingredients?[indexPath.row]
         return cell
+    }
+    
+    @IBAction func shoppingListDeleteButton(_ sender: UIButton) {
+        shoppingList.deleteFromShoppingList(removedItem: shoppingList.getShoppingList()![sender.tag])
+        self.tableView.reloadData()
     }
     
 

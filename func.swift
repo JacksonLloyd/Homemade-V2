@@ -39,7 +39,7 @@ func imageWithGradient(img:UIImage!) -> UIImage{
     return image!
 }
 
-class RoundedButton: UIButton {
+class greenButton: UIButton {
     
     // UIColor for addToShoppingListButton
     let borderColor = UIColor(red: 0, green: 191/255, blue: 165/255, alpha: 1)
