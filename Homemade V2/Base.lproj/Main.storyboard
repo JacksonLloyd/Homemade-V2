@@ -593,33 +593,25 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IwC-3U-Aej">
-                                                    <rect key="frame" x="302" y="0.0" width="73" height="44"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="sectionLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRl-2l-aSI">
+                                                    <rect key="frame" x="10" y="4" width="275" height="37"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="749" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IwC-3U-Aej">
+                                                    <rect key="frame" x="330" y="0.0" width="45" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0" green="0.74901960784313726" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <state key="normal" title="Delete">
+                                                    <state key="normal" image="shoppingList_Tick ">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="shoppingListDeleteButton:" destination="fKU-Uh-0oO" eventType="touchUpInside" id="8H7-fQ-0ad"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sectionLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRl-2l-aSI">
-                                                    <rect key="frame" x="18" y="12" width="237" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="IwC-3U-Aej" firstAttribute="top" secondItem="cWq-yY-D04" secondAttribute="top" id="0tU-vM-sH2"/>
-                                                <constraint firstAttribute="bottom" secondItem="QRl-2l-aSI" secondAttribute="bottom" constant="11" id="D9N-og-yTi"/>
-                                                <constraint firstAttribute="trailing" secondItem="IwC-3U-Aej" secondAttribute="trailing" id="RKG-Eo-koE"/>
-                                                <constraint firstItem="IwC-3U-Aej" firstAttribute="leading" secondItem="QRl-2l-aSI" secondAttribute="leading" constant="284" id="b1U-qK-QAr"/>
-                                                <constraint firstItem="QRl-2l-aSI" firstAttribute="top" secondItem="cWq-yY-D04" secondAttribute="top" constant="12" id="c1f-3P-4zA"/>
-                                                <constraint firstItem="QRl-2l-aSI" firstAttribute="trailing" secondItem="IwC-3U-Aej" secondAttribute="trailing" constant="-120" id="f4k-Og-wbM"/>
-                                                <constraint firstAttribute="bottom" secondItem="IwC-3U-Aej" secondAttribute="bottom" id="n3Q-b6-Wpg"/>
-                                                <constraint firstItem="QRl-2l-aSI" firstAttribute="leading" secondItem="cWq-yY-D04" secondAttribute="leading" constant="18" id="n4p-rW-1Pt"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.0" green="0.58823529411764708" blue="0.53333333333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
@@ -791,6 +783,7 @@
         <image name="feature " width="30" height="30"/>
         <image name="intermediate" width="375" height="178"/>
         <image name="meal1.png" width="1080" height="1080"/>
+        <image name="shoppingList_Tick " width="72" height="71"/>
         <image name="skill_level " width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
