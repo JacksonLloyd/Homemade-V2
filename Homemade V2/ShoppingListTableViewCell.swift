@@ -1,5 +1,5 @@
 //
-//  RecipeShoppingButtonTableViewCell.swift
+//  ShoppingListTableViewCell.swift
 //  Homemade V2
 //
 //  Created by Joshua Jon on 30/8/17.
@@ -8,8 +8,10 @@
 
 import UIKit
 
-class RecipeShoppingButtonTableViewCell: UITableViewCell {
-
+class ShoppingListTableViewCell: UITableViewCell {
+  
+    @IBOutlet weak var shoppingIngredientLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

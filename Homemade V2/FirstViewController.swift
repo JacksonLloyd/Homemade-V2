@@ -12,7 +12,7 @@ import UIKit
 // Property referencing the model for managing data and business logic
 var tableIndex = 0
 let model = Model.sharedInstance
-let recipes = Model.sharedInstance.allRecipes.Recipes()
+let recipes = model.allRecipes.Recipes()
 
 protocol Refresh
 {

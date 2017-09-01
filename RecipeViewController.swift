@@ -14,6 +14,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     //properties
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var totalTimeLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     // retunrs number of rows to display in table
@@ -29,7 +30,6 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
 
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientCell", for: indexPath) as! RecipeTableViewCell
-            print(indexPath.row)
             cell.ingredientLabel.text = recipes[tableIndex].ingredients?[indexPath.row]
             return cell
 
@@ -39,6 +39,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         nameLabel.text = recipes[tableIndex].name
+        totalTimeLabel.text = "Total time: \(recipes[tableIndex].timeTotal) mins"
         recipeImage.image = UIImage(named: recipes[tableIndex].imageName)
         recipeImage.image = imageWithGradient(img: recipeImage.image)
         
@@ -59,6 +60,15 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     // back button to feature view
     @IBAction func unwindToFeature(segue:UIStoryboardSegue){
     }
+    
+    // add recipe ingredients to shopping list
+    @IBAction func addToShoppingListButton(_ sender: Any) {
+        let newItem = ShoppingList(recipeName: recipes[tableIndex].name, ingredients: recipes[tableIndex].ingredients)
+        shoppingList.addToShoppingList(newItem: newItem)
+        print(model.allShoppingList.getShoppingList()!)
+        
+    }
+    
     
     // view directions button (Action) - opens recipe sourceURL in Safari
     @IBAction func directionsButton(_ sender: Any) {

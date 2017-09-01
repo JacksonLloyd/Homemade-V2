@@ -38,3 +38,27 @@ func imageWithGradient(img:UIImage!) -> UIImage{
     
     return image!
 }
+
+class RoundedButton: UIButton {
+    
+    // UIColor for addToShoppingListButton
+    let borderColor = UIColor(red: 0, green: 191/255, blue: 165/255, alpha: 1)
+    
+    required init() {
+        super.init(frame: .zero)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        layer.borderWidth = 2.0
+        layer.borderColor = borderColor.cgColor
+    }
+    
+    // round corners func
+    /*
+     override func draw(_ rect: CGRect) {
+     super.draw(rect)
+     layer.cornerRadius = self.frame.height / 2
+     clipsToBounds = true
+     } */
+}
