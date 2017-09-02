@@ -16,6 +16,8 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var totalTimeLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+   
+    var buttonToggled = true
     
     // retunrs number of rows to display in table
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -66,6 +68,26 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     
     // back button to feature view
     @IBAction func unwindToFeature(segue:UIStoryboardSegue){
+    }
+    @IBAction func addFav(_ sender: Any) {
+        let fav = recipes[tableIndex]
+        model.allFavourites.addToFavourites(newItem: fav)
+        print(model.allFavourites.getFavourites())
+
+    }
+    
+    @IBAction func addToFavouritesButton(_ sender: Any) {
+//        buttonToggled = !buttonToggled
+        let favouriteRecipe = recipes[tableIndex]
+        
+//        if buttonToggled {
+        model.allFavourites.addToFavourites(newItem: favouriteRecipe)
+        
+        print(model.allFavourites.getFavourites())
+//        } else {
+//            model.allFavourites.deleteFromFavourites(removedItem: favouriteRecipe)
+//        }
+        
     }
     
     // add recipe ingredients to shopping list
