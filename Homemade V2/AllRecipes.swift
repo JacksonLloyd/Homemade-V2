@@ -11,12 +11,13 @@ import Foundation
 struct AllRecipes{
     // Stored properties
     var recipes:[Recipe]
-    var favourites:[Recipe]?
+    var favourites:[Recipe] = []
     
     init()
     {
         // Create an array populate with one of each recipe
         recipes = Recipe.getRecipes()
+        favourites = getFavourites()
     }
     
     mutating func Recipes() -> [Recipe]
@@ -28,12 +29,9 @@ struct AllRecipes{
     {
         for fave in recipes {
             if fave.favourite == true {
-                favourites?.append(fave)
-            }
-            else {
-                continue
+                favourites.append(fave)
             }
         }
-        return favourites!
+        return favourites
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Favourites {
+class Favourites {
 //    var favourites:[Recipe]?
 //    
 //    init()

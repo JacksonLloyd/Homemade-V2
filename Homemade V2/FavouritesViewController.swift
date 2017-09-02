@@ -53,10 +53,11 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         faveIndex = indexPath.row
         //performSegue(withIdentifier: "featureToMealSegue", sender: self)
-    }
+    }   
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(favourites)
         // Do any additional setup after loading the view, typically from a nib.
         
         //        self.navigationItem.hidesBackButton = true
