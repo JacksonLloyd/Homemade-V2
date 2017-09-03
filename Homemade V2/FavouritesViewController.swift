@@ -26,13 +26,34 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var lblAnswers: UILabel!
     @IBOutlet weak var imgCard: UIImageView!
     @IBOutlet weak var placeHolder: UIView!
+    @IBOutlet weak var tableView: UITableView!
     var tblIndex = 0
-
     
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return (favourites.count)
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return favourites.count
     }
     
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return favourites.count
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headerCell = tableView.dequeueReusableCell(withIdentifier: "favSectionHeader") as! FavouritesSectionHeaderTableViewCell
+       
+        if (section == 1) {
+            headerCell.favSectionLabel.text = "Lunch Ideas"
+        } else if (section == 2) {
+            headerCell.favSectionLabel.text = "Dessert Insporation"
+        } else {
+            headerCell.favSectionLabel.text = "Family meals"
+        }
+        return headerCell
+    }
+
+
     // returns cell in tableView of recipes
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
@@ -67,6 +88,7 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
+        self.tableView.estimatedSectionHeaderHeight = 10
     }
     
     func back(){

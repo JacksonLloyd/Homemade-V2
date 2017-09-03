@@ -616,8 +616,29 @@
                                         <color key="backgroundColor" red="0.95528727769999999" green="0.26352882389999999" blue="0.21046414969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="sectionIndexBackgroundColor" red="0.95528727769999999" green="0.26352882389999999" blue="0.21046414969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favSectionHeader" rowHeight="108" id="yYQ-KJ-vrw" customClass="FavouritesSectionHeaderTableViewCell" customModule="Homemade_V2" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="108"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yYQ-KJ-vrw" id="8dm-Gj-Q5K">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="108"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="sectionLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d25-3i-7hy">
+                                                            <rect key="frame" x="14" y="14" width="206" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </tableViewCellContentView>
+                                                <color key="backgroundColor" red="0.69196145304568524" green="0.12792352065630724" blue="0.11223207380611586" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <connections>
+                                                    <outlet property="favSectionLabel" destination="d25-3i-7hy" id="MZC-Wp-uD8"/>
+                                                </connections>
+                                            </tableViewCell>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="favouritesCell" rowHeight="188" id="R0C-44-Wto" customClass="FavouritesCell" customModule="Homemade_V2" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="375" height="188"/>
+                                                <rect key="frame" x="0.0" y="136" width="375" height="188"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R0C-44-Wto" id="UdB-5v-hFc">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="188"/>
@@ -683,6 +704,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="KXa-Fp-M8J"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="Uvo-Wg-OKW" id="tVQ-iA-i8k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xtq-M7-7lH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -846,7 +870,7 @@
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="y7R-2p-TSO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="y7R-2p-TSO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -865,7 +889,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mov-sb-vSr" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Cook Time" image="skill_level " id="cPa-gy-q4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="48j-Wr-OCy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="48j-Wr-OCy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -884,7 +908,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8bE-eE-UQz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="FBD-TJ-6gZ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="B6r-zJ-VeL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="B6r-zJ-VeL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -909,6 +933,6 @@
         <image name="skill_level " width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KdO-Xt-pTC"/>
+        <segue reference="J0x-3W-ml9"/>
     </inferredMetricsTieBreakers>
 </document>

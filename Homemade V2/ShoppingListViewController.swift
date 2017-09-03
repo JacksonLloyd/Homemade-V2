@@ -26,11 +26,13 @@ class ShoppingListViewController: UIViewController, UITableViewDataSource, UITab
         // Do any additional setup after loading the view.
     }
     
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return (shoppingList.getShoppingList()!.count)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,10 +45,6 @@ class ShoppingListViewController: UIViewController, UITableViewDataSource, UITab
         headerCell.sectionLabel.text = shoppingList.getShoppingList()?[section].recipeName
         headerCell.shoppingListDeleteButton.tag = section
         return headerCell
-    }
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return (shoppingList.getShoppingList()!.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
