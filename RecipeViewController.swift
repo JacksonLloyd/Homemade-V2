@@ -10,27 +10,29 @@ import UIKit
 import SafariServices
 
 class RecipeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+    var recip:Recipe!
     //properties
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var totalTimeLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+   
+    var buttonToggled = true
     
     // retunrs number of rows to display in table
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return (recipes[tableIndex].ingredients!.count+1)
+        return (recip.ingredients!.count+1)
     }
     
     // returns cell in tableView of ingredients to be displayed
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        if (indexPath.item == recipes[tableIndex].ingredients!.count) {
+        if (indexPath.item == recip.ingredients!.count) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingListCell", for: indexPath) as! RecipeShoppingButtonTableViewCell
             return cell
 
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientCell", for: indexPath) as! RecipeTableViewCell
-            cell.ingredientLabel.text = recipes[tableIndex].ingredients?[indexPath.row]
+            cell.ingredientLabel.text = recip.ingredients?[indexPath.row]
             return cell
 
         }
@@ -38,11 +40,11 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameLabel.text = recipes[tableIndex].name
-        totalTimeLabel.text = "Total time: \(recipes[tableIndex].timeTotal) mins"
-        recipeImage.image = UIImage(named: recipes[tableIndex].imageName)
+        nameLabel.text = recip.name
+        totalTimeLabel.text = "Total time: \(recip.timeTotal) mins"
+        recipeImage.image = UIImage(named: recip.imageName)
         recipeImage.image = imageWithGradient(img: recipeImage.image)
-        
+
         tableView.backgroundView = nil;
         // reloads table data
         func viewDidAppear(animated: Bool) {
@@ -53,6 +55,10 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         let backButton = UIBarButtonItem(image: UIImage(named: "backButton"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(RecipeViewController.back(sender:)))
         self.navigationItem.leftBarButtonItem = backButton
         self.automaticallyAdjustsScrollViewInsets = true
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
     }
     
     func back(sender: UIBarButtonItem){
@@ -64,20 +70,50 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func Ratings(_ sender: Any) {
+        performSegue(withIdentifier: "reviewSegue", sender: self)
+    }
+    override func prepare(for segue:UIStoryboardSegue, sender: Any?){
+        if let destination = segue.destination as? ReviewViewController {
+            destination.recip = recip
+        }
+    }
+    
+    
     // back button to feature view
     @IBAction func unwindToFeature(segue:UIStoryboardSegue){
+    }
+    @IBAction func addFav(_ sender: Any) {
+        let fav = recipes[tableIndex]
+        model.allFavourites.addToFavourites(newItem: fav)
+        print(model.allFavourites.getFavourites())
+
+    }
+    
+    @IBAction func addToFavouritesButton(_ sender: Any) {
+//        buttonToggled = !buttonToggled
+        let favouriteRecipe = recipes[tableIndex]
+        
+//        if buttonToggled {
+        model.allFavourites.addToFavourites(newItem: favouriteRecipe)
+        
+        print(model.allFavourites.getFavourites())
+//        } else {
+//            model.allFavourites.deleteFromFavourites(removedItem: favouriteRecipe)
+//        }
+        
     }
     
     // add recipe ingredients to shopping list
     @IBAction func addToShoppingListButton(_ sender: Any) {
-        let newItem = ShoppingList(recipeName: recipes[tableIndex].name, ingredients: recipes[tableIndex].ingredients)
+        let newItem = ShoppingList(recipeName: recip.name, ingredients: recip.ingredients)
         shoppingList.addToShoppingList(newItem: newItem)
     }
     
     
     // view directions button (Action) - opens recipe sourceURL in Safari
     @IBAction func directionsButton(_ sender: Any) {
-        let svc = SFSafariViewController(url: URL(string: recipes[tableIndex].sourceURL)!)
+        let svc = SFSafariViewController(url: URL(string: recip.sourceURL)!)
         self.present(svc, animated: true, completion: nil)
     }
 }

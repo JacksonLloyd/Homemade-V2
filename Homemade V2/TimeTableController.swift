@@ -1,44 +1,52 @@
 //
-//  FirstViewController.swift
+//  TimeTableController.swift
 //  Homemade V2
 //
-//  Created by Joshua Jon on 14/8/17.
+//  Created by Jackson Lloyd on 3/9/17.
 //  Copyright © 2017 JoshuaJon. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 // initialised outside of class so that RecipeViewController can access
 // Property referencing the model for managing data and business logic
-var tableIndex = 0
-let model = Model.sharedInstance
-let recipes = model.allRecipes.Recipes()
 
+let short = model.allFavourites.shortTime
+let med = model.allFavourites.mediumTime
+let long = model.allFavourites.longTime
 
-protocol Refresh
-{
-    func refresh(recipe:Recipe)
-}
-
-class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+class TimeTableController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // Property referencing the label in the view
     @IBOutlet weak var lblAnswers: UILabel!
     @IBOutlet weak var imgCard: UIImageView!
     @IBOutlet weak var placeHolder: UIView!
-
+    var tblIndex = 0
+    var time = 0
+    var reps:[Recipe] = []
+    
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return (recipes.count)
+        if time == 1 {
+            reps = short
+        } else if time == 2 {
+            reps = med
+        } else if time == 3 {
+            reps = long
+        } else {
+            reps = short
+        }
+        return reps.count
     }
     
     // returns cell in tableView of recipes
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FirstViewControllerTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "timeCell", for: indexPath) as! TimeCell
         
         //assign label and image
-        cell.mealLabel.text = recipes[indexPath.row].name
-        cell.mealImage.image = UIImage(named: (recipes[indexPath.row].name))
+        cell.mealLabel.text = reps[indexPath.row].name
+        cell.mealImage.image = UIImage(named: (reps[indexPath.row].name))
         
         //puts image to the back
         cell.mealImage.layer.zPosition = -5;
@@ -50,34 +58,27 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     // segue to MealSceneController for table row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableIndex = indexPath.row
-        performSegue(withIdentifier: "featureToMealSegue", sender: self)
+        tblIndex = indexPath.row
+        performSegue(withIdentifier: "timeToMealSegue", sender: self)
     }
     override func prepare(for segue:UIStoryboardSegue, sender: Any?){
         if let destination = segue.destination as? MealSceneController {
-            destination.recip = recipes[tableIndex]
+            destination.recip = reps[tblIndex]
         }
-    }
-    @IBAction func unwindToFeature(segue:UIStoryboardSegue){
-        
-    }
-    @IBAction func unwindToMeal(segue:UIStoryboardSegue){
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationItem.hidesBackButton = true
+        let backButton = UIBarButtonItem(image: UIImage(named: "backButton"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(TimeTableController.back(sender:)))
+        self.navigationItem.leftBarButtonItem = backButton
+        self.automaticallyAdjustsScrollViewInsets = true
     }
-    
-    func back(){
+    func back(sender: UIBarButtonItem){
         self.navigationController?.popViewController(animated: true)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

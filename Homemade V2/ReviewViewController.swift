@@ -1,32 +1,22 @@
 //
-//  FirstViewController.swift
+//  ReviewViewController.swift
 //  Homemade V2
 //
-//  Created by Joshua Jon on 14/8/17.
+//  Created by Jackson Lloyd on 3/9/17.
 //  Copyright © 2017 JoshuaJon. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
-// initialised outside of class so that RecipeViewController can access
-// Property referencing the model for managing data and business logic
-var tableIndex = 0
-let model = Model.sharedInstance
-let recipes = model.allRecipes.Recipes()
 
-
-protocol Refresh
-{
-    func refresh(recipe:Recipe)
-}
-
-class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    // Property referencing the label in the view
+class ReviewViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var lblAnswers: UILabel!
     @IBOutlet weak var imgCard: UIImageView!
     @IBOutlet weak var placeHolder: UIView!
-
+    
+    var recip:Recipe!
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return (recipes.count)
     }
@@ -53,16 +43,17 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableIndex = indexPath.row
         performSegue(withIdentifier: "featureToMealSegue", sender: self)
     }
+
+    
+    
     override func prepare(for segue:UIStoryboardSegue, sender: Any?){
-        if let destination = segue.destination as? MealSceneController {
-            destination.recip = recipes[tableIndex]
+        if let destination = segue.destination as? RecipeViewController {
+            destination.recip = recip
         }
     }
-    @IBAction func unwindToFeature(segue:UIStoryboardSegue){
-        
-    }
-    @IBAction func unwindToMeal(segue:UIStoryboardSegue){
-        
+    
+    func back(sender: UIBarButtonItem){
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func viewDidLoad() {
@@ -73,15 +64,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
     }
-    
-    func back(){
-        self.navigationController?.popViewController(animated: true)
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 }
-

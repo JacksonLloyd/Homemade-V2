@@ -12,21 +12,37 @@ import UIKit
 // initialised outside of class so that RecipeViewController can access
 // Property referencing the model for managing data and business logic
 
-var faveIndex = 0
+
 //let model = Model.sharedInstance
-let favourites = model.allFavourites.getFavourites()
+<<<<<<< HEAD
+let favourites = model.allFavourites.favourites
+=======
+var favourites = model.allFavourites.getFavourites()
+var favouritesList = model.allFavourites
+>>>>>>> origin/joshFavourites
 //
 //protocol Refresh
 //{
-//    func refresh(recipe:Recipe)
+//    func refresh(recipe:Recipe)s
 //}
 
 class FavouritesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
     // Property referencing the label in the view
     @IBOutlet weak var lblAnswers: UILabel!
     @IBOutlet weak var imgCard: UIImageView!
     @IBOutlet weak var placeHolder: UIView!
+<<<<<<< HEAD
+    var tblIndex = 0
+
+=======
+    @IBOutlet weak var tableView: UITableView!
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        viewWillAppear(true)
+        self.tableView.reloadData()
+
+    }
+>>>>>>> origin/joshFavourites
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return (favourites.count)
@@ -51,19 +67,35 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
     
     // segue to MealSceneController for table row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        faveIndex = indexPath.row
-        //performSegue(withIdentifier: "featureToMealSegue", sender: self)
-    }   
+        tblIndex = indexPath.row
+        performSegue(withIdentifier: "favouriteToMealSegue", sender: self)
+    }
+    override func prepare(for segue:UIStoryboardSegue, sender: Any?){
+        if let destination = segue.destination as? MealSceneController {
+            destination.recip = favourites[tblIndex]
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+//        self.tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(favourites)
-        // Do any additional setup after loading the view, typically from a nib.
+<<<<<<< HEAD
+=======
+//        self.tableView.reloadData()
+        tableView.delegate = self
+        tableView.dataSource = self
         
-        //        self.navigationItem.hidesBackButton = true
-        //        let backButton = UIBarButtonItem(image: UIImage(named: "backButton"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(FirstViewController.back))
-        //        self.navigationItem.leftBarButtonItem = backButton
-        //        self.automaticallyAdjustsScrollViewInsets = true
+        print(favourites)
+>>>>>>> origin/joshFavourites
+        // Do any additional setup after loading the view, typically from a nib.
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
