@@ -14,31 +14,28 @@ class MealSceneController: UIViewController{
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var mealImage: UIImageView!
     
-    
+    var recip:Recipe!
     var swiped = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        mealImage.image = UIImage(named: recipes[tableIndex].imageName)
+        print(recip)
+        mealImage.image = UIImage(named: recip.imageName)
 
-        
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction(swipe:)))
         swipeUp.direction = UISwipeGestureRecognizerDirection.up
-        
-        /*if (swipeUp.direction == UISwipeGestureRecognizerDirection.up)
-        {
-            swiped = true
-            button.isHidden = true
-            
-        }*/
         
         self.view.addGestureRecognizer(swipeUp)
         self.navigationItem.hidesBackButton = true
         let backButton = UIBarButtonItem(image: UIImage(named: "backButton"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(MealSceneController.back(sender:)))
         self.navigationItem.leftBarButtonItem = backButton
         self.automaticallyAdjustsScrollViewInsets = true
+    }
+    override func prepare(for segue:UIStoryboardSegue, sender: Any?){
+        if let destination = segue.destination as? RecipeViewController {
+            destination.recip = recip
+        }
     }
     
     func back(sender: UIBarButtonItem){
@@ -48,22 +45,6 @@ class MealSceneController: UIViewController{
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    /*@IBAction func backPressed(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }*/
-    
-    @IBAction func unwindToFeature(segue:UIStoryboardSegue){
-        
-    }
-    
-    @IBAction func backPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "unwindSegueToFeature", sender: self)
-    }
-    
-    @IBAction func unwindToMeal(segue:UIStoryboardSegue){
-        
     }
 }
 

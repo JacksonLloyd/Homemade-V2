@@ -14,6 +14,7 @@ var tableIndex = 0
 let model = Model.sharedInstance
 let recipes = model.allRecipes.Recipes()
 
+
 protocol Refresh
 {
     func refresh(recipe:Recipe)
@@ -51,6 +52,11 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableIndex = indexPath.row
         performSegue(withIdentifier: "featureToMealSegue", sender: self)
+    }
+    override func prepare(for segue:UIStoryboardSegue, sender: Any?){
+        if let destination = segue.destination as? MealSceneController {
+            destination.recip = recipes[tableIndex]
+        }
     }
     @IBAction func unwindToFeature(segue:UIStoryboardSegue){
         
