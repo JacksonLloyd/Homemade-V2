@@ -89,6 +89,9 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.95686274509803915" green="0.2627450980392157" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstItem="7Mp-Ce-Y4o" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="3EI-hS-47r"/>
                             <constraint firstItem="7Mp-Ce-Y4o" firstAttribute="top" secondItem="yO6-ZS-cCh" secondAttribute="bottom" constant="5" id="JS2-0f-E1G"/>
@@ -176,6 +179,9 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.95686274510000002" green="0.26274509800000001" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstItem="ByC-ik-88l" firstAttribute="centerX" secondItem="Fbd-jq-j8S" secondAttribute="centerX" id="IIH-8W-IgH"/>
                             <constraint firstItem="ByC-ik-88l" firstAttribute="top" secondItem="Jhb-gw-ULE" secondAttribute="bottom" id="Spa-ab-ncC"/>
@@ -355,6 +361,9 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.92156862745098034" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstItem="pHd-ZS-mw6" firstAttribute="top" secondItem="qD8-lc-ixY" secondAttribute="bottom" id="L2N-4D-sHz"/>
                             <constraint firstItem="pHd-ZS-mw6" firstAttribute="top" secondItem="9rL-Wr-2h3" secondAttribute="bottom" id="NTF-GZ-WOl"/>
@@ -443,6 +452,9 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wzQ-Yp-POn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -461,6 +473,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A9t-aJ-LXK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -496,6 +511,9 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstItem="HFV-Qo-x4U" firstAttribute="centerX" secondItem="Udf-n1-pem" secondAttribute="centerX" id="13x-Uo-3hm"/>
                             <constraint firstItem="HFV-Qo-x4U" firstAttribute="centerY" secondItem="Udf-n1-pem" secondAttribute="centerY" id="9Z6-3l-TRZ"/>
@@ -571,6 +589,9 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.95686274509803915" green="0.2627450980392157" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstItem="7dr-dm-73y" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="5M6-eB-12M"/>
                             <constraint firstItem="7dr-dm-73y" firstAttribute="top" secondItem="hcz-Um-baj" secondAttribute="bottom" constant="5" id="Cst-Lz-uEH"/>
@@ -692,6 +713,9 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.95686274509803915" green="0.2627450980392157" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="4SF-7D-Jzr" secondAttribute="trailing" id="LS5-qS-GCc"/>
                             <constraint firstItem="ecR-wA-khZ" firstAttribute="centerX" secondItem="t32-Np-yy4" secondAttribute="centerX" id="XDw-Zv-c7E"/>
@@ -822,6 +846,9 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.92156862745098034" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstItem="EcB-cB-sUl" firstAttribute="centerX" secondItem="7TR-Pl-wBr" secondAttribute="centerX" id="Cmm-u9-4UU"/>
                             <constraint firstItem="EcB-cB-sUl" firstAttribute="top" secondItem="02G-6h-pXs" secondAttribute="bottom" constant="-21" id="Ok3-No-V0V"/>
@@ -887,7 +914,7 @@
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="y7R-2p-TSO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="y7R-2p-TSO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -906,7 +933,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mov-sb-vSr" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Cook Time" image="skill_level " id="cPa-gy-q4n"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="48j-Wr-OCy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="48j-Wr-OCy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -925,7 +952,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8bE-eE-UQz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="FBD-TJ-6gZ"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="B6r-zJ-VeL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="B6r-zJ-VeL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -950,6 +977,6 @@
         <image name="skill_level " width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="J0x-3W-ml9"/>
+        <segue reference="vfG-Nb-uAr"/>
     </inferredMetricsTieBreakers>
 </document>
