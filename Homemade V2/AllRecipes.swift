@@ -33,29 +33,13 @@ struct AllRecipes{
     }
     mutating func getFavourites() -> [Recipe]
     {
-//        for fave in recipes {
-//            if fave.favourite == true {
-//                favourites.append(fave)
-//            }
-//        }
-        return favourites
-    }
-    
-    mutating func addToFavourites(newItem:Recipe)
-    {
-        favourites.append(newItem)
-    }
-    
-    mutating func deleteFromFavourites(removedItem:Recipe)
-    {
-        for (index, item) in favourites.enumerated()
-        {
-            if item.id == removedItem.id{
-                favourites.remove(at: index)
+        for fave in recipes {
+            if fave.favourite == true {
+                favourites.append(fave)
             }
         }
+        return favourites
     }
-<<<<<<< HEAD
     mutating func shortTiming() -> [Recipe]
     {
         for item in recipes {
@@ -83,7 +67,4 @@ struct AllRecipes{
         }
         return longTime
     }
-=======
-
->>>>>>> origin/joshFavourites
 }

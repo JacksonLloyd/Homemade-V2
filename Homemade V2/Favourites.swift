@@ -8,44 +8,33 @@
 
 import Foundation
 
-struct Favourites {
-    
-//    // Stored properties
+class Favourites {
 //    var favourites:[Recipe]?
 //    
 //    init()
 //    {
 //        // Create an array populate with one of each recipe
-//        favourites = getFavourites()
+//        favourites = Favourites.getFavourites()
 //    }
 //    
-//    func getFavourites() -> [Recipe]?
+//    mutating func getFavourites() -> [Recipe]
 //    {
-////        for fave in recipes {
-////            if fave.favourite == true {
-////                favourites?.append(fave)
-////            }
-////            else {
-////                continue
-////            }
-////        }
-//        return favourites
-//        
-//    }
-//    
-//    mutating func addToFavourites(newItem:Recipe)
-//    {
-//        favourites?.append(newItem)
-//    }
-//    
-//    mutating func deleteFromFavourites(removedItem:Recipe)
-//    {
-//        for (index, item) in favourites!.enumerated()
-//        {
-//            if item.id == removedItem.id{
-//                favourites?.remove(at: index)
+//        for fave in recipes {
+//            if fave.favourite == true {
+//                favourites?.append(fave)
+//            }
+//            else {
+//                continue
 //            }
 //        }
+//    return favourites!
+//    }
+//    
+//    func addFavourites() ->[Recipe]{
+//        favourites!.append("")
+//    }
+//    func removeFavourites() ->[Recipe]{
+//        return favourites!
 //    }
 }
 

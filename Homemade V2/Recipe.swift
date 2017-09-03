@@ -143,10 +143,6 @@ enum Recipe:Int
         }
     }
     
-    mutating func getFavourite() -> Bool{
-        return favourite
-    }
-    
     static func getRecipes() ->[Recipe]
     {
         return [recipe1, recipe2, recipe3]
