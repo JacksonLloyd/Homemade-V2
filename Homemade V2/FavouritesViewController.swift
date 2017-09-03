@@ -14,7 +14,12 @@ import UIKit
 
 
 //let model = Model.sharedInstance
+<<<<<<< HEAD
 let favourites = model.allFavourites.favourites
+=======
+var favourites = model.allFavourites.getFavourites()
+var favouritesList = model.allFavourites
+>>>>>>> origin/joshFavourites
 //
 //protocol Refresh
 //{
@@ -26,8 +31,18 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var lblAnswers: UILabel!
     @IBOutlet weak var imgCard: UIImageView!
     @IBOutlet weak var placeHolder: UIView!
+<<<<<<< HEAD
     var tblIndex = 0
 
+=======
+    @IBOutlet weak var tableView: UITableView!
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        viewWillAppear(true)
+        self.tableView.reloadData()
+
+    }
+>>>>>>> origin/joshFavourites
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return (favourites.count)
@@ -61,8 +76,25 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+//        self.tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+<<<<<<< HEAD
+=======
+//        self.tableView.reloadData()
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        print(favourites)
+>>>>>>> origin/joshFavourites
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
