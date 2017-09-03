@@ -14,11 +14,17 @@ struct AllShoppingList{
     var shopList:[ShoppingList]?
     
     //dummy data
-    let item1 = ShoppingList.init(recipeName:"meal1", ingredients:["flour","eggs","milk"])
+    let item1 = ShoppingList.init(recipeName:"Greek Pasta", ingredients:["flour","eggs","milk"])
     
-    let item2 = ShoppingList.init(recipeName:"meal2", ingredients:["cheese","lettuce","almonds"])
+    let item2 = ShoppingList.init(recipeName:"Ultimate Bacon Burger", ingredients:["cheese","lettuce","almonds", "30g butter"])
     
-    let item3 = ShoppingList.init(recipeName:"meal3", ingredients:["potato","chicken","rice"])
+    let item3 = ShoppingList.init(recipeName:"Sweet Cake", ingredients:["potato","chicken","rice", "loaf of bread"])
+    
+    let item4 = ShoppingList.init(recipeName:"Custard Donut", ingredients:["flour","eggs","milk", "5 tablespoons canola oil"])
+    
+    let item5 = ShoppingList.init(recipeName:"Italian Meatballs", ingredients:["cheese","1/4 cup rice wine or white wine", "lettuce","almonds"])
+    
+    let item6 = ShoppingList.init(recipeName:"Gyros Platter", ingredients:["1 red onion, peeled and thinly sliced (about 2 cups)", "potato","chicken","rice"])
     
     init()
     {
@@ -32,13 +38,24 @@ struct AllShoppingList{
     }
     mutating func getList() ->[ShoppingList]?
     {
-        return [item1!, item2!, item3!]
+        return [item1!, item2!, item3!, item4!, item5!, item6!]
     }
     
     //doing loops by name will result in bugs, think about using recipe id?
     mutating func addToShoppingList(newItem:ShoppingList)
     {
-        shopList?.append(newItem)
+        var alreadyAdded = false
+        for (index, item) in shopList!.enumerated()
+        {
+            if item.recipeName == newItem.recipeName{
+                alreadyAdded = true
+            }
+        }
+        
+        if (alreadyAdded == false) {
+            shopList?.append(newItem)
+        }
+        
     }
     mutating func deleteFromShoppingList(removedItem:ShoppingList)
     {
