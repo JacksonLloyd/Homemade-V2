@@ -42,7 +42,7 @@ class ShoppingListViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "sectionHeaderCell") as! ShoppingListSectionTableViewCell
-        headerCell.sectionLabel.text = shoppingList.getShoppingList()?[section].recipeName
+        headerCell.sectionLabel.text = shoppingList.getShoppingList()?[section].name
         headerCell.shoppingListDeleteButton.tag = section
         return headerCell
     }

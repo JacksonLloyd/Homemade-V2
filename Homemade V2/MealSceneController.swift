@@ -21,7 +21,7 @@ class MealSceneController: UIViewController{
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         print(recip)
-        mealImage.image = UIImage(named: recip.imageName)
+        mealImage.image = UIImage(named: recip.image!)
 
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction(swipe:)))
         swipeUp.direction = UISwipeGestureRecognizerDirection.up

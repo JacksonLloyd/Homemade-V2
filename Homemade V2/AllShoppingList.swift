@@ -14,17 +14,17 @@ struct AllShoppingList{
     var shopList:[ShoppingList]?
     
     //dummy data
-    let item1 = ShoppingList.init(recipeName:"Greek Pasta", ingredients:["flour","eggs","milk"])
+    let item1 = ShoppingList(name:"Greek Pasta", ingredients:["flour","eggs","milk"])
     
-    let item2 = ShoppingList.init(recipeName:"Ultimate Bacon Burger", ingredients:["cheese","lettuce","almonds", "30g butter"])
+    let item2 = ShoppingList(name:"Ultimate Bacon Burger", ingredients:["cheese","lettuce","almonds", "30g butter"])
     
-    let item3 = ShoppingList.init(recipeName:"Sweet Cake", ingredients:["potato","chicken","rice", "loaf of bread"])
+    let item3 = ShoppingList(name:"Sweet Cake", ingredients:["potato","chicken","rice", "loaf of bread"])
     
-    let item4 = ShoppingList.init(recipeName:"Custard Donut", ingredients:["flour","eggs","milk", "5 tablespoons canola oil"])
+    let item4 = ShoppingList(name:"Custard Donut", ingredients:["flour","eggs","milk", "5 tablespoons canola oil"])
     
-    let item5 = ShoppingList.init(recipeName:"Italian Meatballs", ingredients:["cheese","1/4 cup rice wine or white wine", "lettuce","almonds"])
+    let item5 = ShoppingList(name:"Italian Meatballs", ingredients:["cheese","1/4 cup rice wine or white wine", "lettuce","almonds"])
     
-    let item6 = ShoppingList.init(recipeName:"Gyros Platter", ingredients:["1 red onion, peeled and thinly sliced (about 2 cups)", "potato","chicken","rice"])
+    let item6 = ShoppingList(name:"Gyros Platter", ingredients:["1 red onion, peeled and thinly sliced (about 2 cups)", "potato","chicken","rice"])
     
     init()
     {
@@ -42,28 +42,27 @@ struct AllShoppingList{
     }
     
     //doing loops by name will result in bugs, think about using recipe id?
-    mutating func addToShoppingList(newItem:ShoppingList)
+    mutating func addToShoppingList(newItem:ShoppingList) -> Bool
     {
-        var alreadyAdded = false
-        for (index, item) in shopList!.enumerated()
+        for (_, item) in shopList!.enumerated()
         {
-            if item.recipeName == newItem.recipeName{
-                alreadyAdded = true
+            if item.name == newItem.name{
+                return false
             }
         }
         
-        if (alreadyAdded == false) {
-            shopList?.append(newItem)
-        }
-        
+        shopList?.append(newItem)
+        return true
     }
-    mutating func deleteFromShoppingList(removedItem:ShoppingList)
+    mutating func deleteFromShoppingList(removedItem:ShoppingList) -> Bool
     {
         for (index, item) in shopList!.enumerated()
         {
-            if item.recipeName == removedItem.recipeName{
+            if item.name == removedItem.name{
                 shopList?.remove(at: index)
+                return true
             }
         }
+        return false
     }
 }

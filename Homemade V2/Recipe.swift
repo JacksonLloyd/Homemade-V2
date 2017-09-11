@@ -8,7 +8,40 @@
 
 import Foundation
 
-enum Recipe:Int
+class Recipe{
+    var id:String
+    var name:String
+    var image:String?
+    var ingredients:[String]?
+    var timeTotal:Int
+    var rating:Int
+    var sourceURL:String
+    
+    init(id:String, name:String, image:String?, ingredients:[String]?, timeTotal:Int, rating:Int, sourceURL:String){
+        self.id = id
+        self.name = name
+        self.image = image
+        self.ingredients = ingredients
+        self.timeTotal = timeTotal
+        self.rating = rating
+        self.sourceURL = sourceURL
+    }
+    
+    init?(id:String, name:String, image:String, ingredients:[String], timeTotal:Int, rating:Int, sourceURL:String){
+        if id.isEmpty{
+            return nil
+        }
+        
+        self.id = id
+        self.name = name
+        self.image = image
+        self.ingredients = ingredients
+        self.timeTotal = timeTotal
+        self.rating = rating
+        self.sourceURL = sourceURL
+    }
+}
+/*enum Recipe:Int
 {
     case recipe1=1, recipe2, recipe3, recipe4, recipe5, recipe6, recipe7
     
@@ -180,4 +213,4 @@ enum Recipe:Int
     {
         return [recipe1, recipe2, recipe3, recipe4, recipe5, recipe6, recipe7]
     }
-}
+}*/

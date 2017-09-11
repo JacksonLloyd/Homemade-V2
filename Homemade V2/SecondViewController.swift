@@ -11,6 +11,7 @@ import UIKit
 class SecondViewController: UIViewController {
     var segueTime = 0
     
+    @IBOutlet var timeView: UIView!
     @IBAction func shortBtn(_ sender: Any) {
         segueTime = 1
         performSegue(withIdentifier: "timeBtn", sender: self)
@@ -34,6 +35,7 @@ class SecondViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         UIView.setAnimationsEnabled(false)
+//        self.timeView//.layer.removeAllAnimations()
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()

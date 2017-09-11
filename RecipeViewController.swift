@@ -40,7 +40,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         nameLabel.text = recip.name
         totalTimeLabel.text = "Total time: \(recip.timeTotal) mins"
-        recipeImage.image = UIImage(named: recip.imageName)
+        recipeImage.image = UIImage(named: recip.image!)
         recipeImage.image = imageWithGradient(img: recipeImage.image)
 
         tableView.backgroundView = nil;
@@ -84,7 +84,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     
     // add recipe ingredients to shopping list
     @IBAction func addToShoppingListButton(_ sender: Any) {
-        let newItem = ShoppingList(recipeName: recip.name, ingredients: recip.ingredients)
+        let newItem = ShoppingList(name: recip.name, ingredients: recip.ingredients)
         shoppingList.addToShoppingList(newItem: newItem)
     }
     

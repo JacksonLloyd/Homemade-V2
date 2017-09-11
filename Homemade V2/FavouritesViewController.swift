@@ -31,23 +31,31 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return favourites.count
+        if favourites == nil {
+            return 0
+        }
+        return favourites!.count
     }
     
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return favourites.count
+        if favourites == nil {
+            return 0
+        }
+        return favourites!.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "favSectionHeader") as! FavouritesSectionHeaderTableViewCell
-       
-        if (section == 1) {
+        
+        if (section == 0) {
+            headerCell.favSectionLabel.text = "No adfljdaf"
+        }else if (section == 1) {
             headerCell.favSectionLabel.text = "Lunch Ideas"
         } else if (section == 2) {
             headerCell.favSectionLabel.text = "Dessert Insporation"
-        } else {
+        } else{
             headerCell.favSectionLabel.text = "Family meals"
         }
         return headerCell
@@ -56,12 +64,15 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
 
     // returns cell in tableView of recipes
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        if favourites == nil {
+            
+        }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "favouritesCell", for: indexPath) as! FavouritesCell
         
         //assign label and image
-        cell.mealLabel.text = favourites[indexPath.row].name
-        cell.mealImage.image = UIImage(named: (favourites[indexPath.row].name))
+        cell.mealLabel.text = favourites?[indexPath.row].name
+        cell.mealImage.image = UIImage(named: (favourites?[indexPath.row].name)!)
         
         //puts image to the back
         cell.mealImage.layer.zPosition = -5;
@@ -78,7 +89,7 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
     }
     override func prepare(for segue:UIStoryboardSegue, sender: Any?){
         if let destination = segue.destination as? MealSceneController {
-            destination.recip = favourites[tblIndex]
+            destination.recip = favourites?[tblIndex]
         }
     }
     
