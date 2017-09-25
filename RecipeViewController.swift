@@ -77,11 +77,6 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
-    
-    // back button to feature view
-    @IBAction func unwindToFeature(segue:UIStoryboardSegue){
-    }
-    
     // add recipe ingredients to shopping list
     @IBAction func addToShoppingListButton(_ sender: Any) {
         let newItem = ShoppingList(name: recip.name, ingredients: recip.ingredients)

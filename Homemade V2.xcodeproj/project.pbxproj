@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		0905EE301F4C5D99003BF228 /* MealSceneController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0905EE2F1F4C5D99003BF228 /* MealSceneController.swift */; };
 		0905EE321F4C76A4003BF228 /* AllShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0905EE311F4C76A4003BF228 /* AllShoppingList.swift */; };
+		090D43C41F6FB3470003C6D4 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 090D43C31F6FB3470003C6D4 /* libsqlite3.0.tbd */; };
+		090D43D31F70C6230003C6D4 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 090D43C81F70C6230003C6D4 /* FMDatabase.m */; };
+		090D43D41F70C6230003C6D4 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 090D43CA1F70C6230003C6D4 /* FMDatabaseAdditions.m */; };
+		090D43D51F70C6230003C6D4 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 090D43CC1F70C6230003C6D4 /* FMDatabasePool.m */; };
+		090D43D61F70C6230003C6D4 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 090D43CE1F70C6230003C6D4 /* FMDatabaseQueue.m */; };
+		090D43D71F70C6230003C6D4 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 090D43D11F70C6230003C6D4 /* FMResultSet.m */; };
 		094FFF631F4A79CE004866BC /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094FFF621F4A79CE004866BC /* Recipe.swift */; };
 		094FFF651F4A79FF004866BC /* ShoppingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094FFF641F4A79FF004866BC /* ShoppingList.swift */; };
 		094FFF671F4A7A11004866BC /* Favourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094FFF661F4A7A11004866BC /* Favourites.swift */; };
@@ -59,6 +65,19 @@
 /* Begin PBXFileReference section */
 		0905EE2F1F4C5D99003BF228 /* MealSceneController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealSceneController.swift; sourceTree = "<group>"; };
 		0905EE311F4C76A4003BF228 /* AllShoppingList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllShoppingList.swift; sourceTree = "<group>"; };
+		090D43C31F6FB3470003C6D4 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		090D43C61F70C6230003C6D4 /* Homemade V2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Homemade V2-Bridging-Header.h"; sourceTree = "<group>"; };
+		090D43C71F70C6230003C6D4 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		090D43C81F70C6230003C6D4 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		090D43C91F70C6230003C6D4 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		090D43CA1F70C6230003C6D4 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		090D43CB1F70C6230003C6D4 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		090D43CC1F70C6230003C6D4 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		090D43CD1F70C6230003C6D4 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		090D43CE1F70C6230003C6D4 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		090D43CF1F70C6230003C6D4 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		090D43D01F70C6230003C6D4 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		090D43D11F70C6230003C6D4 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		094FFF621F4A79CE004866BC /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		094FFF641F4A79FF004866BC /* ShoppingList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingList.swift; sourceTree = "<group>"; };
 		094FFF661F4A7A11004866BC /* Favourites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favourites.swift; sourceTree = "<group>"; };
@@ -100,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				090D43C41F6FB3470003C6D4 /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +140,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		090D43C21F6FB3460003C6D4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				090D43C31F6FB3470003C6D4 /* libsqlite3.0.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		090D43C51F70C5A20003C6D4 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				090D43C71F70C6230003C6D4 /* FMDatabase.h */,
+				090D43C81F70C6230003C6D4 /* FMDatabase.m */,
+				090D43C91F70C6230003C6D4 /* FMDatabaseAdditions.h */,
+				090D43CA1F70C6230003C6D4 /* FMDatabaseAdditions.m */,
+				090D43CB1F70C6230003C6D4 /* FMDatabasePool.h */,
+				090D43CC1F70C6230003C6D4 /* FMDatabasePool.m */,
+				090D43CD1F70C6230003C6D4 /* FMDatabaseQueue.h */,
+				090D43CE1F70C6230003C6D4 /* FMDatabaseQueue.m */,
+				090D43CF1F70C6230003C6D4 /* FMDB.h */,
+				090D43D01F70C6230003C6D4 /* FMResultSet.h */,
+				090D43D11F70C6230003C6D4 /* FMResultSet.m */,
+				090D43C61F70C6230003C6D4 /* Homemade V2-Bridging-Header.h */,
+			);
+			name = Database;
+			sourceTree = "<group>";
+		};
 		093ED1C91F4454C9008108F0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +220,7 @@
 				7D6F0BDF1F414FA3003F60BE /* Homemade V2Tests */,
 				7D6F0BEA1F414FA3003F60BE /* Homemade V2UITests */,
 				7D6F0BC71F414FA3003F60BE /* Products */,
+				090D43C21F6FB3460003C6D4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -192,6 +240,7 @@
 				093ED1CB1F4454D4008108F0 /* Controller */,
 				093ED1CA1F4454CF008108F0 /* View */,
 				093ED1C91F4454C9008108F0 /* Model */,
+				090D43C51F70C5A20003C6D4 /* Database */,
 				7D6F0BC91F414FA3003F60BE /* AppDelegate.swift */,
 				7D6F0BD41F414FA3003F60BE /* LaunchScreen.storyboard */,
 				7D0EDF851F43E01A0016471D /* Assets.xcassets */,
@@ -286,6 +335,7 @@
 				TargetAttributes = {
 					7D6F0BC51F414FA3003F60BE = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Manual;
 					};
 					7D6F0BDB1F414FA3003F60BE = {
@@ -367,6 +417,7 @@
 				094FFF6B1F4A9B9E004866BC /* Model.swift in Sources */,
 				7D6F0BCE1F414FA3003F60BE /* SecondViewController.swift in Sources */,
 				7D93BD751F5C1440008657E2 /* FavouritesSectionHeaderTableViewCell.swift in Sources */,
+				090D43D31F70C6230003C6D4 /* FMDatabase.m in Sources */,
 				09EB671D1F5964070019B662 /* FavouritesCell.swift in Sources */,
 				0905EE321F4C76A4003BF228 /* AllShoppingList.swift in Sources */,
 				7D6F0BCA1F414FA3003F60BE /* AppDelegate.swift in Sources */,
@@ -374,9 +425,13 @@
 				09BB73DA1F5D40BF000E084E /* FeatureCollectionView.swift in Sources */,
 				7DFEF9431F56F31600850359 /* ShoppingListViewController.swift in Sources */,
 				7D6F0BCC1F414FA3003F60BE /* FirstViewController.swift in Sources */,
+				090D43D41F70C6230003C6D4 /* FMDatabaseAdditions.m in Sources */,
+				090D43D71F70C6230003C6D4 /* FMResultSet.m in Sources */,
 				7D354E121F58ED8F00BC90C1 /* ShoppingListSectionTableViewCell.swift in Sources */,
+				090D43D51F70C6230003C6D4 /* FMDatabasePool.m in Sources */,
 				7D6F0BFA1F4152A8003F60BE /* FirstViewControllerTableViewCell.swift in Sources */,
 				7DFEF9411F56682300850359 /* RecipeShoppingButtonTableViewCell.swift in Sources */,
+				090D43D61F70C6230003C6D4 /* FMDatabaseQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,12 +585,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Homemade V2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "joshuajon.Homemade-V2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Homemade V2/Homemade V2-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -544,12 +602,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Homemade V2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "joshuajon.Homemade-V2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Homemade V2/Homemade V2-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -13,6 +13,10 @@ class Model
     var allRecipes:AllRecipes
     var allShoppingList:AllShoppingList
     var allFavourites:Favourites
+    var uuid:String
+    
+    //let insertFave = "INSERT INTO favourites (uuid, recipeID, name, image, timeTotal, rating, sourceURL) VALUES ('\(uuid)', '\(specieDetail.commonNameFR)', '\(specieDetail.commonNameES)', '\(specieDetail.commonNameDE)', '\(specieDetail.userNotes)');"
+    var databasePath = NSString()
     
     /* Here we use a Struct to hold the instance of the model i.e itself*/
     private struct Static
@@ -36,6 +40,37 @@ class Model
         allRecipes = AllRecipes()
         allShoppingList = AllShoppingList()
         allFavourites = Favourites()!
+        uuid = UUID().uuidString
+    }
+    
+    func retrieveFavourites(){
+        let getFaves = "SELECT * FROM favourites WHERE uuid = '\(uuid)';"
+        
+        // Get a reference to the database
+        let favouritesDB = FMDatabase(path: databasePath as String)
+        
+        if (contactDB?.open())!
+        {
+            // Prepare a statement for operating on the database
+            let querySQL = "SELECT address, phone FROM CONTACTS WHERE name = '\(name.text!)'"
+            
+            let results:FMResultSet? = contactDB?.executeQuery(querySQL,
+                                                               withArgumentsIn: nil)
+            
+            if results?.next() == true {
+                address.text = results?.string(forColumn: "address")!
+                phone.text = results?.string(forColumn: "phone")!
+                status.text = "Record Found"
+            } else {
+                status.text = "Record not found"
+                address.text = ""
+                phone.text = ""
+            }
+            contactDB?.close()
+        } else {
+            print("Error: \(contactDB?.lastErrorMessage())")
+        }
+        
     }
     
     

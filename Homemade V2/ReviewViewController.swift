@@ -41,7 +41,7 @@ class ReviewViewController: UIViewController, UITableViewDataSource, UITableView
     // segue to MealSceneController for table row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableIndex = indexPath.row
-        performSegue(withIdentifier: "featureToMealSegue", sender: self)
+        performSegue(withIdentifier: "detailedReview", sender: self)
     }
 
     
@@ -50,6 +50,10 @@ class ReviewViewController: UIViewController, UITableViewDataSource, UITableView
         if let destination = segue.destination as? RecipeViewController {
             destination.recip = recip
         }
+    }
+    
+    @IBAction func SubmitReviewBtn(_ sender: Any) {
+        performSegue(withIdentifier: "submitReview", sender: self)
     }
     
     func back(sender: UIBarButtonItem){
