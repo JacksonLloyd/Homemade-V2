@@ -12,25 +12,17 @@ import UIKit
 // Property referencing the model for managing data and business logic
 var tableIndex = 0
 let model = Model.sharedInstance
-let recipes = model.allRecipes.getRecipes()
+var recipes = model.allRecipes.getRecipes()
 let session = URLSession.shared
 
 // Constants for building various url requests to the service
 let BASE_URL: String = "http://api.yummly.com/v1/api/"
-let ALL_RECIPES:String = "recipes/"
+let ALL_RECIPES:String = "recipes?"
 let RECIPE_DETAILS:String = "recipe/"
-let API_KEY:String = "?_app_key=04689cd3a2a696e426bc2aa144f4e925"
-let APP_KEY:String = "?_app_id=f9d0a582"
+let API_KEY:String = "_app_key=04689cd3a2a696e426bc2aa144f4e925"
+let APP_ID:String = "_app_id=f9d0a582"
 var ID_LENGTH:Int = 4
 //let movieTitle:String = txtMovieTitle.text!.escapedParameters()
-//let findMovieId = BASE_URL + SEARCH_MOVIE + API_KEY + "&" + movieTitle
-//if let url = URL(string: findMovieId)
-//{
-//    let request = URLRequest(url: url)
-//    // Initialise the task for getting the data, this is a custom method so you will get a compile error here as we haven't yet
-//    written this method.
-//    initialiseTaskForGettingData(request, element: "results")
-//}
 
 protocol Refresh
 {
@@ -118,5 +110,77 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
+    func allRecipesAPI()
+    {
+        let getAllRecipes = BASE_URL + ALL_RECIPES + APP_ID + "&" + API_KEY
+        if let url = URL(string: getAllRecipes)
+        {
+            let request = URLRequest(url: url)
+            // Initialise the task for getting the data, this is a custom method so you will get a compile error here as we haven't yet written this method.
+            initialiseTaskForGettingData(request, element: "results")
+        }
+    }
+    
+    func initialiseTaskForGettingData(_ request: URLRequest, element:String)
+    {
+        let session = URLSession.shared
+        /* 4 - Initialize task for getting data */
+        let task = session.dataTask(with: request, completionHandler: {data, response, downloadError in
+            // Handler in the case of an error
+            if let error = downloadError
+            {
+                print("\(data) \n data")
+                print("\(response) \n response")
+                print("\(error)\n error")
+            }
+            else
+            {
+                // Create a variable to hold the results once they have been passed through the JSONSerialiser.
+                // Why has this variable been declared with an explicit data type of Any
+                let parsedResult: Any!
+                do
+                {
+                    // Convert the http response payload to JSON.
+                    parsedResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
+                }
+                catch let error as NSError
+                {
+                    parsedResult = nil
+                }
+                catch
+                {
+                    fatalError()
+                }
+                
+                // Log the results to the console, so you can see what is being sent back from the service.
+                print(parsedResult)
+                
+//  Extract an element from the data as an array, if your JSON response returns a dictionary you will need to convert it to an NSDictionary
+//  Why must parsedResult be cast to AnyObject if it is already declared as type Any, there is a clue in the syntax :-)
+                if let recipeArray = (parsedResult as AnyObject).value(forKey: element) as? NSArray
+                {
+                    var id:String?
+                    for r in recipeArray
+                    {
+                        let recipe = r as! NSDictionary
+                        
+                        if recipe.value(forKey: "original_title") as! String == self.recipes.id
+                        {
+                            id = String(describing: recipe.value(forKey: "id")!)
+                            print(id)
+                            break
+                        }
+                    }
+                    if id == ""
+                    {
+                        print("Recipe not found")
+                    }
+                }
+            }
+        })
+        // Execute the task
+        task.resume()
+    }
+
 }
 

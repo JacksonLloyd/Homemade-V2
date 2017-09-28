@@ -100,6 +100,17 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.tableView.estimatedSectionHeaderHeight = 10
+        
+//        // Create the database
+//        let filemgr = FileManager.default
+//        let dirPaths =
+//            NSSearchPathForDirectoriesInDomains(.documentDirectory,
+//                                                .userDomainMask, true)
+//        
+//        let docsDir = dirPaths[0]
+//        
+//        databasePath = (docsDir as NSString).appendingPathComponent(
+//            "recipesdb.db") as NSString
     }
     
     func back(){

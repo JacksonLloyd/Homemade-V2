@@ -47,14 +47,14 @@ class Model
         let getFaves = "SELECT * FROM favourites WHERE uuid = '\(uuid)';"
         
         // Get a reference to the database
-        let favouritesDB = FMDatabase(path: databasePath as String)
+        let recipesDB = FMDatabase(path: databasePath as String)
         
-        if (contactDB?.open())!
+        if (recipesDB?.open())!
         {
             // Prepare a statement for operating on the database
             let querySQL = "SELECT address, phone FROM CONTACTS WHERE name = '\(name.text!)'"
             
-            let results:FMResultSet? = contactDB?.executeQuery(querySQL,
+            let results:FMResultSet? = recipesDB?.executeQuery(querySQL,
                                                                withArgumentsIn: nil)
             
             if results?.next() == true {
@@ -66,9 +66,9 @@ class Model
                 address.text = ""
                 phone.text = ""
             }
-            contactDB?.close()
+            recipesDB?.close()
         } else {
-            print("Error: \(contactDB?.lastErrorMessage())")
+            print("Error: \(recipesDB?.lastErrorMessage())")
         }
         
     }
