@@ -80,6 +80,7 @@ struct AllRecipes{
         //recipes = recipePop()
         return recipes
     }
+    
     mutating func shortTiming() -> [Recipe]
     {
         for item in recipes {
@@ -89,6 +90,7 @@ struct AllRecipes{
         }
         return shortTime
     }
+    
     mutating func medTiming() -> [Recipe]
     {
         for item in recipes {
@@ -98,6 +100,7 @@ struct AllRecipes{
         }
         return mediumTime
     }
+    
     mutating func longTiming() -> [Recipe]
     {
         for item in recipes {

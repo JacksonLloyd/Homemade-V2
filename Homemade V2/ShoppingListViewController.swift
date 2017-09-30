@@ -14,6 +14,7 @@ class ShoppingListViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidAppear(_ animated: Bool) {
+        // reloads table for any recipe add or delete
          self.tableView.reloadData()
     }
     
@@ -23,7 +24,6 @@ class ShoppingListViewController: UIViewController, UITableViewDataSource, UITab
         tableView.dataSource = self
         // set the section header height
         self.tableView.estimatedSectionHeaderHeight = 10
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
@@ -31,15 +31,18 @@ class ShoppingListViewController: UIViewController, UITableViewDataSource, UITab
         // Dispose of any resources that can be recreated.
     }
     
+    // returns number of sections in tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return (shoppingList.getShoppingList()!.count)
     }
     
+    // returns number of rows in section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sections = shoppingList.getShoppingList()![section].ingredients!.count
         return sections
     }
     
+    // custom view for header in section
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "sectionHeaderCell") as! ShoppingListSectionTableViewCell
         headerCell.sectionLabel.text = shoppingList.getShoppingList()?[section].name
@@ -47,28 +50,16 @@ class ShoppingListViewController: UIViewController, UITableViewDataSource, UITab
         return headerCell
     }
     
+    // returns cells to be displayed in sections
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingIngredientCell", for: indexPath) as! ShoppingListTableViewCell
         cell.shoppingIngredientLabel.text = shoppingList.getShoppingList()![indexPath.section].ingredients?[indexPath.row]
         return cell
     }
     
+    // delete button to remove recipe from shopping list
     @IBAction func shoppingListDeleteButton(_ sender: UIButton) {
         shoppingList.deleteFromShoppingList(removedItem: shoppingList.getShoppingList()![sender.tag])
         self.tableView.reloadData()
     }
-    
-
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

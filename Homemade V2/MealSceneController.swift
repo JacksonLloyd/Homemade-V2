@@ -19,19 +19,22 @@ class MealSceneController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         print(recip)
         mealImage.image = UIImage(named: recip.image!)
 
+        // initialise SwipeGestureRecognizer
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction(swipe:)))
         swipeUp.direction = UISwipeGestureRecognizerDirection.up
-        
+        // adds gesture to view
         self.view.addGestureRecognizer(swipeUp)
+        // hide default back button
         self.navigationItem.hidesBackButton = true
+        // custom back button
         let backButton = UIBarButtonItem(image: UIImage(named: "backButton"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(MealSceneController.back(sender:)))
         self.navigationItem.leftBarButtonItem = backButton
         self.automaticallyAdjustsScrollViewInsets = true
     }
+    
     override func prepare(for segue:UIStoryboardSegue, sender: Any?){
         if let destination = segue.destination as? RecipeViewController {
             destination.recip = recip

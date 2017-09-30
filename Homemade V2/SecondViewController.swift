@@ -12,6 +12,8 @@ class SecondViewController: UIViewController {
     var segueTime = 0
     
     @IBOutlet var timeView: UIView!
+    
+    // button action segues for three different time categories: short, med, long
     @IBAction func shortBtn(_ sender: Any) {
         segueTime = 1
         performSegue(withIdentifier: "timeBtn", sender: self)

@@ -52,6 +52,7 @@ class ReviewViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    // button action for review submission
     @IBAction func SubmitReviewBtn(_ sender: Any) {
         performSegue(withIdentifier: "submitReview", sender: self)
     }

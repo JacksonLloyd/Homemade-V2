@@ -17,42 +17,48 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var totalTimeLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    // retunrs number of rows to display in table
+    // returns number of rows to display in table
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return (recip.ingredients!.count+1)
     }
     
     // returns cell in tableView of ingredients to be displayed
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        // sections
         if (indexPath.item == recip.ingredients!.count) {
             let cell = tableView.dequeueReusableCell(withIdentifier: "shoppingListCell", for: indexPath) as! RecipeShoppingButtonTableViewCell
             return cell
-
-        } else {
+        }
+        // rows
+        else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ingredientCell", for: indexPath) as! RecipeTableViewCell
             cell.ingredientLabel.text = recip.ingredients?[indexPath.row]
             return cell
-
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // assigning recipe outlets for view
         nameLabel.text = recip.name
         totalTimeLabel.text = "Total time: \(recip.timeTotal) mins"
         recipeImage.image = UIImage(named: recip.image!)
         recipeImage.image = imageWithGradient(img: recipeImage.image)
-
+        
         tableView.backgroundView = nil;
+        
         // reloads table data
         func viewDidAppear(animated: Bool) {
             super.viewDidAppear(animated)
             tableView.reloadData()
         }
+        // hides default back button
         self.navigationItem.hidesBackButton = true
+        //custom back button
         let backButton = UIBarButtonItem(image: UIImage(named: "backButton"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(RecipeViewController.back(sender:)))
         self.navigationItem.leftBarButtonItem = backButton
         self.automaticallyAdjustsScrollViewInsets = true
+        
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -68,6 +74,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    // segue to ratings view
     @IBAction func Ratings(_ sender: Any) {
         performSegue(withIdentifier: "reviewSegue", sender: self)
     }

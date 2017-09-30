@@ -30,6 +30,7 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
     var tblIndex = 0
     
     
+    // returns number of sections in tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         if favourites == nil {
             return 0
@@ -37,7 +38,7 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
         return favourites!.count
     }
     
-    
+    // returns number of rows in sections
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if favourites == nil {
             return 0
@@ -45,6 +46,7 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
         return favourites!.count
     }
     
+    // custom header view for sections
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "favSectionHeader") as! FavouritesSectionHeaderTableViewCell
@@ -67,17 +69,17 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
         if favourites == nil {
             
         }
-        
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "favouritesCell", for: indexPath) as! FavouritesCell
         
-        //assign label and image
+        // assign label and image
         cell.mealLabel.text = favourites?[indexPath.row].name
         cell.mealImage.image = UIImage(named: (favourites?[indexPath.row].name)!)
         
-        //puts image to the back
+        // puts image to the back
         cell.mealImage.layer.zPosition = -5;
         
-        /* add gradient over image*/
+        // add gradient over image
         cell.mealImage.image = imageWithGradient(img: cell.mealImage.image)
         return(cell)
     }
@@ -95,7 +97,6 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true

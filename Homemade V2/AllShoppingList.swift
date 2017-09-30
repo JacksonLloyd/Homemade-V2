@@ -32,6 +32,7 @@ struct AllShoppingList{
         shopList = getList()
     }
     
+    
     mutating func getShoppingList() ->[ShoppingList]?
     {
         return shopList
@@ -54,6 +55,8 @@ struct AllShoppingList{
         shopList?.append(newItem)
         return true
     }
+    
+    // deletes recipe from shoppinglist
     mutating func deleteFromShoppingList(removedItem:ShoppingList) -> Bool
     {
         for (index, item) in shopList!.enumerated()
