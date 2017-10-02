@@ -40,8 +40,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         nameLabel.text = recip.name
         totalTimeLabel.text = "Total time: \(recip.timeTotal! / 60) mins"
-        recipeImage.image = UIImage(named: "meal1")//recip.image!)
-        recipeImage.image = imageWithGradient(img: recipeImage.image)
+		recipeImage.loadImageUsingUrlString(urlString: recip.image!)
 
         tableView.backgroundView = nil;
         // reloads table data

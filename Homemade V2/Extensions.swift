@@ -37,14 +37,17 @@ extension String {
 extension UIImageView {
     public func loadImageUsingUrlString(urlString: String) {
         
-        URLSession.shared.dataTask(with: NSURL(string: urlString)! as URL, completionHandler: { (data, response, error) -> Void in
+        URLSession.shared.dataTask(with: URL(string: urlString)! as URL, completionHandler: { (data, response, error) -> Void in
             
             if error != nil {
                 print(error)
                 return
             }
             
-            DispatchQueue.main.async(execute: {self.image = UIImage(data: data!)})
+            DispatchQueue.main.async(execute: {
+				self.image = UIImage(data: data!)
+				self.image = imageWithGradient(img: self.image)
+			})
         }).resume()
     }
     

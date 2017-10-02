@@ -775,7 +775,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="693"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="downArrow" translatesAutoresizingMaskIntoConstraints="NO" id="DAy-1p-tuV">
-                                        <rect key="frame" x="87" y="623" width="240" height="50"/>
+                                        <rect key="frame" x="157" y="622" width="100" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="MRt-kS-XPk"/>
                                         </constraints>
@@ -783,11 +783,11 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="DAy-1p-tuV" secondAttribute="trailing" constant="87" id="5Bc-Wb-Vby"/>
+                                    <constraint firstAttribute="trailing" secondItem="DAy-1p-tuV" secondAttribute="trailing" constant="157" id="5Bc-Wb-Vby"/>
                                     <constraint firstItem="XIr-oA-C6H" firstAttribute="centerX" secondItem="HFV-Qo-x4U" secondAttribute="centerX" id="7mE-bi-hnH"/>
                                     <constraint firstItem="XIr-oA-C6H" firstAttribute="width" secondItem="HFV-Qo-x4U" secondAttribute="width" id="BDg-Tq-0At"/>
-                                    <constraint firstItem="DAy-1p-tuV" firstAttribute="leading" secondItem="HFV-Qo-x4U" secondAttribute="leading" constant="87" id="Jmq-GK-ZJj"/>
-                                    <constraint firstAttribute="bottom" secondItem="DAy-1p-tuV" secondAttribute="bottom" constant="20" id="PgV-QA-9LD"/>
+                                    <constraint firstItem="DAy-1p-tuV" firstAttribute="leading" secondItem="HFV-Qo-x4U" secondAttribute="leading" constant="157" id="Jmq-GK-ZJj"/>
+                                    <constraint firstAttribute="bottom" secondItem="DAy-1p-tuV" secondAttribute="bottom" constant="21" id="PgV-QA-9LD"/>
                                     <constraint firstItem="XIr-oA-C6H" firstAttribute="height" secondItem="HFV-Qo-x4U" secondAttribute="height" id="VLN-ek-MjR"/>
                                     <constraint firstItem="DAy-1p-tuV" firstAttribute="centerX" secondItem="HFV-Qo-x4U" secondAttribute="centerX" id="rhh-7k-hhu"/>
                                     <constraint firstItem="XIr-oA-C6H" firstAttribute="centerY" secondItem="HFV-Qo-x4U" secondAttribute="centerY" id="tEO-Mg-Agj"/>

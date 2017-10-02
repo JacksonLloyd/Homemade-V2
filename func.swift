@@ -10,7 +10,6 @@ import UIKit
 
 // https://stackoverflow.com/questions/29105541/applying-gradient-to-uiimage-smoothly
 func imageWithGradient(img:UIImage!) -> UIImage{
-    
     UIGraphicsBeginImageContext(img.size)
     let context = UIGraphicsGetCurrentContext()
     

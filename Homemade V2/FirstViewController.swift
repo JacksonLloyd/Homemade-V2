@@ -16,8 +16,8 @@ let model = Model.sharedInstance
 
 // Constants for building various url requests to the service
 let BASE_URL: String = "http://api.yummly.com/v1/api/"
-let ALL_RECIPES:String = "recipes?"
-let RECIPE_DETAILS:String = BASE_URL + "recipe/"
+let ALL_RECIPES:String = "recipes"
+let RECIPE_DETAILS:String = "recipe/"
 let API_KEY:String = "_app_key=04689cd3a2a696e426bc2aa144f4e925"
 let APP_ID:String = "_app_id=f9d0a582"
 let APP_API:String = "?" + APP_ID + "&" + API_KEY
@@ -46,7 +46,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func allRecipesAPI()
     {
-        let getAllRecipes = BASE_URL + ALL_RECIPES + APP_ID + "&" + API_KEY
+        let getAllRecipes = BASE_URL + ALL_RECIPES + APP_API
         if let url = URL(string: getAllRecipes)
         {
             let request = URLRequest(url: url)
@@ -110,7 +110,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 			let recipeId:String = (rDictionary["id"] as? String)!
 			
 			// Build the URL as the basis for the request
-			let recipeDetailsURL = RECIPE_DETAILS + recipeId + APP_API
+			let recipeDetailsURL = BASE_URL + RECIPE_DETAILS + recipeId + APP_API
 			let url = URL(string: recipeDetailsURL)!
 			let request = URLRequest(url: url)
 			let session = URLSession.shared
@@ -163,7 +163,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 						fatalError()
 					}
 				}
-				self.tableView.reloadData()
+				print(self.recipes!)
+				DispatchQueue.main.async(execute: {self.tableView.reloadData()})
 			})
 			task.resume()
 		}
@@ -239,39 +240,16 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.mealLabel.text = recipes?[indexPath.row].name
         
         let url = recipes?[indexPath.row].image!
-        
-//        imgCard.loadImageUsingUrlString(urlString: url!)
-//        
-//        if imgCard.image != nil {
-//            cell.mealImage.image = imgCard.image //UIImage(named: (recipes?[indexPath.row].name)!)
-//        } else{
-            cell.mealImage.image = UIImage(named: "meal1")
-//        }
+
+		
+		cell.mealImage.loadImageUsingUrlString(urlString: url!)
+
         //puts image to the back
         cell.mealImage.layer.zPosition = -5;
-        
-        /* add gradient over image*/
-        cell.mealImage.image = imageWithGradient(img: cell.mealImage.image)
+		
         return(cell)
     }
-    
-    func setupRecipeImage(recipe:Recipe) {
-        if let recipeImg = recipe.image {
-            let url = URL(string: recipeImg)
-            
-            session.dataTask(with: url!, completionHandler: { (data, response, error) in
-                if error != nil {
-                    print(error)
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    self.imgCard.image = UIImage(data: data!)
-                }
-            }).resume()
-        }
-    }
-    
+	
     // segue to MealSceneController for table row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableIndex = indexPath.row
