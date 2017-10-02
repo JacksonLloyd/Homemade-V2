@@ -12,15 +12,15 @@ import UIKit
 // Property referencing the model for managing data and business logic
 var tableIndex = 0
 let model = Model.sharedInstance
-var recipes = model.allRecipes.getRecipes()
-let session = URLSession.shared
+// var recipes = model.allRecipes.getRecipes()
 
 // Constants for building various url requests to the service
 let BASE_URL: String = "http://api.yummly.com/v1/api/"
 let ALL_RECIPES:String = "recipes?"
-let RECIPE_DETAILS:String = "recipe/"
+let RECIPE_DETAILS:String = BASE_URL + "recipe/"
 let API_KEY:String = "_app_key=04689cd3a2a696e426bc2aa144f4e925"
 let APP_ID:String = "_app_id=f9d0a582"
+let APP_API:String = "?" + APP_ID + "&" + API_KEY
 var ID_LENGTH:Int = 4
 //let movieTitle:String = txtMovieTitle.text!.escapedParameters()
 
@@ -28,87 +28,21 @@ protocol Refresh
 {
     func refresh(recipe:Recipe)
 }
-extension String {
-    
-    func escapedParameters() -> String {
-        
-        var urlVars = [String]()
-        let parameters:[String: AnyObject] = [
-            "query": self as AnyObject
-        ]
-        
-        for (key, value) in parameters {
-            
-            /* Make sure that it is a string value */
-            let stringValue = "\(value)"
-            
-            /* Escape it */
-            let escapedValue = stringValue.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-            
-            /* Append it */
-            urlVars += [key + "=" + "\(escapedValue!)"]
-        }
-        
-        return (!urlVars.isEmpty ? "" : "") + urlVars.joined(separator: "&")
-    }
-}
 
-class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
     // Property referencing the label in the view
     @IBOutlet weak var lblAnswers: UILabel!
     @IBOutlet weak var imgCard: UIImageView!
     @IBOutlet weak var placeHolder: UIView!
-
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return (recipes.count)
-    }
+    var filtered:[String] = []
+    var recipes:[Recipe]?
+    let session = URLSession.shared
+    var searchActive:Bool = false
     
-    // returns cell in tableView of recipes
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FirstViewControllerTableViewCell
-        
-        //assign label and image
-        cell.mealLabel.text = recipes[indexPath.row].name
-        cell.mealImage.image = UIImage(named: (recipes[indexPath.row].name))
-        
-        //puts image to the back
-        cell.mealImage.layer.zPosition = -5;
-        
-        /* add gradient over image*/
-        cell.mealImage.image = imageWithGradient(img: cell.mealImage.image)
-        return(cell)
-    }
-    
-    // segue to MealSceneController for table row
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableIndex = indexPath.row
-        performSegue(withIdentifier: "featureToMealSegue", sender: self)
-    }
-    override func prepare(for segue:UIStoryboardSegue, sender: Any?){
-        if let destination = segue.destination as? MealSceneController {
-            destination.recip = recipes[tableIndex]
-        }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-    }
-    
-    func back(){
-        self.navigationController?.popViewController(animated: true)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func allRecipesAPI()
     {
@@ -123,9 +57,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func initialiseTaskForGettingData(_ request: URLRequest, element:String)
     {
-        let session = URLSession.shared
         /* 4 - Initialize task for getting data */
-        let task = session.dataTask(with: request, completionHandler: {data, response, downloadError in
+        let task = session.dataTask(with: request, completionHandler: {(data, response, downloadError) in
             // Handler in the case of an error
             if let error = downloadError
             {
@@ -135,52 +68,221 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             }
             else
             {
-                // Create a variable to hold the results once they have been passed through the JSONSerialiser.
-                // Why has this variable been declared with an explicit data type of Any
-                let parsedResult: Any!
                 do
                 {
+                    self.recipes = [Recipe]()
                     // Convert the http response payload to JSON.
-                    parsedResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
+                    let parsedResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! [String:Any]
+                    
+                    let data = parsedResult["matches"] as! [[String: AnyObject]]
+                    
+					DispatchQueue.main.async(execute: {self.getRecipeDetails(data)})
+					//self.tableView.reloadData()
                 }
                 catch let error as NSError
                 {
-                    parsedResult = nil
+                    print(error)
                 }
                 catch
                 {
                     fatalError()
                 }
-                
-                // Log the results to the console, so you can see what is being sent back from the service.
-                print(parsedResult)
-                
-//  Extract an element from the data as an array, if your JSON response returns a dictionary you will need to convert it to an NSDictionary
-//  Why must parsedResult be cast to AnyObject if it is already declared as type Any, there is a clue in the syntax :-)
-                if let recipeArray = (parsedResult as AnyObject).value(forKey: element) as? NSArray
-                {
-                    var id:String?
-                    for r in recipeArray
-                    {
-                        let recipe = r as! NSDictionary
-                        
-                        if recipe.value(forKey: "original_title") as! String == self.recipes.id
-                        {
-                            id = String(describing: recipe.value(forKey: "id")!)
-                            print(id)
-                            break
-                        }
-                    }
-                    if id == ""
-                    {
-                        print("Recipe not found")
-                    }
-                }
             }
         })
-        // Execute the task
         task.resume()
     }
+	
+    func getRecipeDetails(_ data: [[String: AnyObject]])
+    {
+		self.recipes = [Recipe]()
+		
+		for item in data
+		{
+			var recipe = Recipe(id:"m01",
+			                    name:"PearsonDelight",
+			                    image:"PearsonDelight",
+			                    ingredients:["10g flour", "2 eggs", "250ml milk", "1 cup of water", "500g of bacon (preferably rindless bacon)", "2 eggs", "250ml milk", "1 cup of water", "500g of bacon (preferably rindless bacon)"],
+			                    timeTotal:10,
+			                    rating:2,
+			                    sourceURL:"http://iowagirleats.com/2016/04/25/bacon-and-goat-cheese-stuffed-sweet-pepper-poppers/")
+			
+			let rDictionary = item as NSDictionary
+			let recipeId:String = (rDictionary["id"] as? String)!
+			
+			// Build the URL as the basis for the request
+			let recipeDetailsURL = RECIPE_DETAILS + recipeId + APP_API
+			let url = URL(string: recipeDetailsURL)!
+			let request = URLRequest(url: url)
+			let session = URLSession.shared
+
+			
+			// Initialise the task for getting the data
+			let task = session.dataTask(with: request, completionHandler: {data, response, downloadError in
+				if let error = downloadError
+				{
+					print(error)
+				}
+				else
+				{
+					// Parse the data received from the service
+					var parsingError: NSError? = nil
+					do
+					{
+						let parsedResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! [String:AnyObject]
+						
+						//self.recipe = Recipe()
+						var ingredientsArray:[String]? = []
+						
+						recipe!.id = (parsedResult["id"] as? String)!
+						recipe!.name = (parsedResult["name"] as? String)!
+						recipe!.timeTotal = (parsedResult["totalTimeInSeconds"] as? Int)!
+						recipe!.rating = (parsedResult["rating"] as? Int)!
+						
+						if let imageURL = parsedResult["images"] as? [[String: AnyObject]] {
+							let lrgImage = imageURL[0]
+							recipe!.image = (lrgImage["hostedLargeUrl"]! as? String)!
+						}
+						
+						if let source = parsedResult["source"] as? [String:AnyObject] {
+							let sourceURL = source["sourceRecipeUrl"]
+							recipe!.sourceURL = (source["sourceRecipeUrl"]! as? String)!
+						}
+						
+						let ingredients = parsedResult["ingredientLines"] as! [String]
+						
+						for item in ingredients {
+							ingredientsArray?.append(item)
+						}
+						recipe!.ingredients = ingredientsArray!
+						
+						self.recipes!.append(recipe!)
+					} catch var error as NSError {
+						parsingError = error
+					}
+					catch {
+						fatalError()
+					}
+				}
+				self.tableView.reloadData()
+			})
+			task.resume()
+		}
+    }
+
+	
+	
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        allRecipesAPI()
+		
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+		
+        /* Setup delegates */
+        tableView.delegate = self
+        tableView.dataSource = self
+        searchBar.delegate = self
+    }
+	
+    func back(){
+        self.navigationController?.popViewController(animated: true)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    /**
+     * Search bar functions
+     */
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true
+    }
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false
+    }
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar.endEditing(true)
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        
+        if(filtered.count == 0){
+            searchActive = false;
+        } else {
+            searchActive = true;
+        }
+    }
+    
+    /**
+     * Table Setup
+     */
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return recipes?.count ?? 0
+    }
+    
+    // returns cell in tableView of recipes
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FirstViewControllerTableViewCell
+        
+        //assign label and image
+        cell.mealLabel.text = recipes?[indexPath.row].name
+        
+        let url = recipes?[indexPath.row].image!
+        
+//        imgCard.loadImageUsingUrlString(urlString: url!)
+//        
+//        if imgCard.image != nil {
+//            cell.mealImage.image = imgCard.image //UIImage(named: (recipes?[indexPath.row].name)!)
+//        } else{
+            cell.mealImage.image = UIImage(named: "meal1")
+//        }
+        //puts image to the back
+        cell.mealImage.layer.zPosition = -5;
+        
+        /* add gradient over image*/
+        cell.mealImage.image = imageWithGradient(img: cell.mealImage.image)
+        return(cell)
+    }
+    
+    func setupRecipeImage(recipe:Recipe) {
+        if let recipeImg = recipe.image {
+            let url = URL(string: recipeImg)
+            
+            session.dataTask(with: url!, completionHandler: { (data, response, error) in
+                if error != nil {
+                    print(error)
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    self.imgCard.image = UIImage(data: data!)
+                }
+            }).resume()
+        }
+    }
+    
+    // segue to MealSceneController for table row
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableIndex = indexPath.row
+        performSegue(withIdentifier: "featureToMealSegue", sender: self)
+    }
+    override func prepare(for segue:UIStoryboardSegue, sender: Any?){
+        if let destination = segue.destination as? MealSceneController {
+            destination.recip = recipes?[tableIndex]
+        }
+    }
+
 
 }
 

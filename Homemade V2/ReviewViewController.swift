@@ -18,7 +18,7 @@ class ReviewViewController: UIViewController, UITableViewDataSource, UITableView
     var recip:Recipe!
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return (recipes.count)
+        return 1
     }
     
     // returns cell in tableView of recipes
@@ -27,8 +27,8 @@ class ReviewViewController: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FirstViewControllerTableViewCell
         
         //assign label and image
-        cell.mealLabel.text = recipes[indexPath.row].name
-        cell.mealImage.image = UIImage(named: (recipes[indexPath.row].name))
+        // cell.mealLabel.text = recipes[indexPath.row].name
+        // cell.mealImage.image = UIImage(named: (recipes[indexPath.row].name))
         
         //puts image to the back
         cell.mealImage.layer.zPosition = -5;

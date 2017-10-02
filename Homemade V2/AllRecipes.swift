@@ -83,7 +83,7 @@ struct AllRecipes{
     mutating func shortTiming() -> [Recipe]
     {
         for item in recipes {
-            if item.timeTotal <= 45 {
+            if item.timeTotal! <= 45 {
                 shortTime.append(item)
             }
         }
@@ -92,7 +92,7 @@ struct AllRecipes{
     mutating func medTiming() -> [Recipe]
     {
         for item in recipes {
-            if item.timeTotal > 45 && item.timeTotal <= 90 {
+            if item.timeTotal! > 45 && item.timeTotal! <= 90 {
                 mediumTime.append(item)
             }
         }
@@ -101,7 +101,7 @@ struct AllRecipes{
     mutating func longTiming() -> [Recipe]
     {
         for item in recipes {
-            if item.timeTotal > 90 {
+            if item.timeTotal! > 90 {
                 longTime.append(item)
             }
         }

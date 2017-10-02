@@ -47,29 +47,29 @@ class Model
         let getFaves = "SELECT * FROM favourites WHERE uuid = '\(uuid)';"
         
         // Get a reference to the database
-        let recipesDB = FMDatabase(path: databasePath as String)
-        
-        if (recipesDB?.open())!
-        {
-            // Prepare a statement for operating on the database
-            let querySQL = "SELECT address, phone FROM CONTACTS WHERE name = '\(name.text!)'"
-            
-            let results:FMResultSet? = recipesDB?.executeQuery(querySQL,
-                                                               withArgumentsIn: nil)
-            
-            if results?.next() == true {
-                address.text = results?.string(forColumn: "address")!
-                phone.text = results?.string(forColumn: "phone")!
-                status.text = "Record Found"
-            } else {
-                status.text = "Record not found"
-                address.text = ""
-                phone.text = ""
-            }
-            recipesDB?.close()
-        } else {
-            print("Error: \(recipesDB?.lastErrorMessage())")
-        }
+//        let recipesDB = FMDatabase(path: databasePath as String)
+//        
+//        if (recipesDB?.open())!
+//        {
+//            // Prepare a statement for operating on the database
+//            let querySQL = "SELECT address, phone FROM CONTACTS WHERE name = '\(name.text!)'"
+//            
+//            let results:FMResultSet? = recipesDB?.executeQuery(querySQL,
+//                                                               withArgumentsIn: nil)
+//            
+//            if results?.next() == true {
+//                address.text = results?.string(forColumn: "address")!
+//                phone.text = results?.string(forColumn: "phone")!
+//                status.text = "Record Found"
+//            } else {
+//                status.text = "Record not found"
+//                address.text = ""
+//                phone.text = ""
+//            }
+//            recipesDB?.close()
+//        } else {
+//            print("Error: \(recipesDB?.lastErrorMessage())")
+//        }
         
     }
     

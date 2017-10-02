@@ -39,8 +39,8 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         nameLabel.text = recip.name
-        totalTimeLabel.text = "Total time: \(recip.timeTotal) mins"
-        recipeImage.image = UIImage(named: recip.image!)
+        totalTimeLabel.text = "Total time: \(recip.timeTotal! / 60) mins"
+        recipeImage.image = UIImage(named: "meal1")//recip.image!)
         recipeImage.image = imageWithGradient(img: recipeImage.image)
 
         tableView.backgroundView = nil;
@@ -86,7 +86,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     
     // view directions button (Action) - opens recipe sourceURL in Safari
     @IBAction func directionsButton(_ sender: Any) {
-        let svc = SFSafariViewController(url: URL(string: recip.sourceURL)!)
+        let svc = SFSafariViewController(url: URL(string: recip.sourceURL!)!)
         self.present(svc, animated: true, completion: nil)
     }
 }

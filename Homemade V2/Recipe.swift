@@ -6,6 +6,7 @@
 //  Copyright © 2017 JoshuaJon. All rights reserved.
 //
 
+import UIKit
 import Foundation
 
 class Recipe{
@@ -13,9 +14,9 @@ class Recipe{
     var name:String
     var image:String?
     var ingredients:[String]?
-    var timeTotal:Int
-    var rating:Int
-    var sourceURL:String
+    var timeTotal:Int?
+    var rating:Int?
+    var sourceURL:String?
     
     init(id:String, name:String, image:String?, ingredients:[String]?, timeTotal:Int, rating:Int, sourceURL:String){
         self.id = id
