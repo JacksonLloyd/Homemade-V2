@@ -9,13 +9,6 @@
 import Foundation
 import UIKit
 
-// initialised outside of class so that RecipeViewController can access
-// Property referencing the model for managing data and business logic
-
-let short = model.allRecipes.shortTime
-let med = model.allRecipes.mediumTime
-let long = model.allRecipes.longTime
-
 class TimeTableController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // Property referencing the label in the view
     @IBOutlet weak var lblAnswers: UILabel!
@@ -23,20 +16,13 @@ class TimeTableController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var placeHolder: UIView!
     var tblIndex = 0
     var time = 0
-    var reps:[Recipe] = []
-    
+    var reps:[Recipe]! = []
+	
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        if time == 1 {
-            reps = short
-        } else if time == 2 {
-            reps = med
-        } else if time == 3 {
-            reps = long
-        } else {
-            reps = short
-        }
-        return reps.count
+		reps = timing(time: time)
+		
+        return reps?.count ?? 0
     }
     
     // returns cell in tableView of recipes
@@ -83,6 +69,23 @@ class TimeTableController: UIViewController, UITableViewDataSource, UITableViewD
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+	
+	func timing(time:Int) -> [Recipe]!
+	{
+		var tempRecipeArray:[Recipe]? = []
+		
+		for item in recipes! {
+			if item.timeTotal! <= 45 && time == 1 {
+				tempRecipeArray!.append(item)
+			}
+			else if item.timeTotal! > 45 && item.timeTotal! <= 90 && time == 2 {
+				tempRecipeArray!.append(item)
+			}
+			else if item.timeTotal! > 90 && time == 3 {
+				tempRecipeArray!.append(item)
+			}
+		}
+		return tempRecipeArray!
+	}
 }
 

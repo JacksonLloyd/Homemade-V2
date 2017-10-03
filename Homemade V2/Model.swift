@@ -13,8 +13,9 @@ class Model
     var allRecipes:AllRecipes
     var allShoppingList:AllShoppingList
     var allFavourites:Favourites
-    var uuid:String
-    
+	var uuid:String
+	
+	
     //let insertFave = "INSERT INTO favourites (uuid, recipeID, name, image, timeTotal, rating, sourceURL) VALUES ('\(uuid)', '\(specieDetail.commonNameFR)', '\(specieDetail.commonNameES)', '\(specieDetail.commonNameDE)', '\(specieDetail.userNotes)');"
     var databasePath = NSString()
     
@@ -41,8 +42,9 @@ class Model
         allShoppingList = AllShoppingList()
         allFavourites = Favourites()!
         uuid = UUID().uuidString
+		
     }
-    
+	
     func retrieveFavourites(){
         let getFaves = "SELECT * FROM favourites WHERE uuid = '\(uuid)';"
         
@@ -75,15 +77,17 @@ class Model
     
     
     // Return the oracles response to the question posed by the user
-    /*func respond()->String
-    {
-        let recipe = Recipe()
-        //let ingredients = ingredients.getRecipeIngredients()
-        var recipeImpersontor = recipe
- 
-        // Set the current card name based on the specified index
-        startingRecipe = Array(recipe.recipe)[1]
-        
-        return startingRecipe.interpretation
-    }*/
+//    func respond()->String
+//    {
+//        let recipe = Recipe()
+//        //let ingredients = ingredients.getRecipeIngredients()
+//        var recipeImpersontor = recipe
+// 
+//        // Set the current card name based on the specified index
+//        startingRecipe = Array(recipe.recipe)[1]
+//        
+//        return startingRecipe.interpretation
+//    }
+	
+	
 }
