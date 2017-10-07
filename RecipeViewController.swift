@@ -70,8 +70,9 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     @IBAction func Ratings(_ sender: Any) {
         performSegue(withIdentifier: "reviewSegue", sender: self)
     }
+    
     override func prepare(for segue:UIStoryboardSegue, sender: Any?){
-        if let destination = segue.destination as? ReviewViewController {
+        if let destination = segue.destination as? RatingViewController {
             destination.recip = recip
         }
     }

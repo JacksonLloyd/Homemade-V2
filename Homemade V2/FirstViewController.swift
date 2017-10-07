@@ -136,7 +136,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 						recipe!.id = (parsedResult["id"] as? String)!
 						recipe!.name = (parsedResult["name"] as? String)!
 						recipe!.timeTotal = (parsedResult["totalTimeInSeconds"] as? Int)!
-						recipe!.rating = (parsedResult["rating"] as? Int)!
+						recipe!.rating = (parsedResult["rating"] as? Double)!
 						
 						if let imageURL = parsedResult["images"] as? [[String: AnyObject]] {
 							let lrgImage = imageURL[0]
