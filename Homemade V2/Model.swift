@@ -148,14 +148,6 @@ class Model
 	
 		if (recipesDB?.open())!
 		{
-			var recipe = Recipe(id:"m01",
-			                    name:"PearsonDelight",
-			                    image:"PearsonDelight",
-			                    ingredients:["10g flour", "2 eggs", "250ml milk", "1 cup of water", "500g of bacon (preferably rindless bacon)", "2 eggs", "250ml milk", "1 cup of water", "500g of bacon (preferably rindless bacon)"],
-			                    timeTotal:10,
-			                    rating:2,
-			                    sourceURL:"http://iowagirleats.com/2016/04/25/bacon-and-goat-cheese-stuffed-sweet-pepper-poppers/")
-			
 			// Prepare a statement for operating on the database
 			let querySQL = "SELECT * FROM favourites"// WHERE uuid = '\(uuid)'"
 	
@@ -165,6 +157,14 @@ class Model
 				return nil
 			}
 			while (results?.next())! {
+				var recipe = Recipe(id:"m01",
+				                    name:"PearsonDelight",
+				                    image:"PearsonDelight",
+				                    ingredients:["10g flour", "2 eggs", "250ml milk", "1 cup of water", "500g of bacon (preferably rindless bacon)", "2 eggs", "250ml milk", "1 cup of water", "500g of bacon (preferably rindless bacon)"],
+				                    timeTotal:10,
+				                    rating:2,
+				                    sourceURL:"http://iowagirleats.com/2016/04/25/bacon-and-goat-cheese-stuffed-sweet-pepper-poppers/")
+				
 				recipe?.id = (results?.string(forColumn: "recipeID")!)!
 				recipe?.name = (results?.string(forColumn: "name")!)!
 				recipe?.image = (results?.string(forColumn: "image")!)!
@@ -172,7 +172,7 @@ class Model
 				recipe?.timeTotal = Int((results?.int(forColumn: "timeTotal"))!)
 				recipe?.rating = (results?.double(forColumn: "rating"))!
 				recipe?.sourceURL = (results?.string(forColumn: "sourceURL")!)!
-				tempFavourites?.append(recipe!)
+				tempFavourites!.append(recipe!)
 			}
 			recipesDB?.close()
 		} else {
@@ -188,20 +188,18 @@ class Model
 		// Get a reference to the database
 		let recipesDB = FMDatabase(path: databasePath as String)
 		var tempIngredients:[String]? = []
+		var tempIng:String? = ""
 		
 		if (recipesDB?.open())!
 		{
-			var tempIng:String?
-			
 			// Prepare a statement for operating on the database
 			let querySQL = "SELECT * FROM faveIngredients WHERE recipeID = '\(recipeID)'"
 			
-			let results:FMResultSet? = recipesDB?.executeQuery(querySQL,
-			                                                   withArgumentsIn: nil)
+			let results:FMResultSet? = recipesDB?.executeQuery(querySQL, withArgumentsIn: nil)
 			
 			while (results?.next())! {
 				tempIng? = (results?.string(forColumn: "ingredient")!)!
-				if tempIng != nil {
+				if tempIng! != "" {
 					tempIngredients?.append(tempIng!)
 				}
 			}

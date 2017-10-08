@@ -76,11 +76,14 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
             destination.recip = favourites?[tblIndex]
         }
     }
-    
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		favourites = model.popuateFavourites()
+		tableView.reloadData()
+	}
     override func viewDidLoad() {
         super.viewDidLoad()
-		favourites = model.popuateFavourites()
-		//DispatchQueue.main.async(execute: {self.tableView.reloadData()})
 		
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)

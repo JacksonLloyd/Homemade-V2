@@ -38,65 +38,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Homemade V2/FavouritesViewController.swift"
-            timestampString = "529141101.617566"
+            filePath = "Homemade V2/Model.swift"
+            timestampString = "529144059.073023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "popuateFavourites()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Homemade V2/Model.swift"
-            timestampString = "529141192.228945"
+            filePath = "Homemade V2/FavouritesViewController.swift"
+            timestampString = "529145107.59072"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
-            landmarkName = "popuateFavourites()"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Homemade_V2.Model.popuateFavourites () -&gt; Swift.Optional&lt;Swift.Array&lt;Homemade_V2.Recipe&gt;&gt;"
-                  moduleName = "Homemade V2"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jacksonlloyd/Desktop/iPhone/iPhone%20Assignment/Homemade%20V2/Homemade%20V2/Model.swift"
-                  timestampString = "529141332.0315"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "171"
-                  endingLineNumber = "171"
-                  offsetFromSymbolStart = "4513">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Homemade_V2.Model.popuateFavourites () -&gt; Swift.Optional&lt;Swift.Array&lt;Homemade_V2.Recipe&gt;&gt;"
-                  moduleName = "Homemade V2"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jacksonlloyd/Desktop/iPhone/iPhone%20Assignment/Homemade%20V2/Homemade%20V2/Model.swift"
-                  timestampString = "529141332.034064"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "171"
-                  endingLineNumber = "171"
-                  offsetFromSymbolStart = "8038">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
