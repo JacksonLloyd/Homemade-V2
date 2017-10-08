@@ -357,11 +357,23 @@
                                             <action selector="directionsButton:" destination="6xm-wi-9DN" eventType="touchUpInside" id="BGU-EC-xHX"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgx-6G-DNh">
+                                        <rect key="frame" x="354" y="50" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="vtY-CL-Xfp"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="favourites "/>
+                                        <connections>
+                                            <action selector="faveBtn:" destination="6xm-wi-9DN" eventType="touchUpInside" id="7Xo-WL-kFx"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="kgx-6G-DNh" firstAttribute="top" secondItem="ao3-fE-uvk" secondAttribute="bottom" constant="-50" id="2bI-hn-Kh4"/>
                                     <constraint firstItem="2oY-Ig-ocv" firstAttribute="centerX" secondItem="qD8-lc-ixY" secondAttribute="centerX" id="2dZ-Rc-aa3"/>
                                     <constraint firstItem="aBa-vE-ymE" firstAttribute="width" secondItem="qD8-lc-ixY" secondAttribute="width" id="2uS-k1-ex1"/>
+                                    <constraint firstItem="kgx-6G-DNh" firstAttribute="leading" secondItem="qD8-lc-ixY" secondAttribute="leading" constant="354" id="2ym-RN-ZGq"/>
                                     <constraint firstItem="9rL-Wr-2h3" firstAttribute="width" secondItem="qD8-lc-ixY" secondAttribute="width" id="BQ4-0S-0JS"/>
                                     <constraint firstAttribute="trailing" secondItem="X0R-Jz-5pi" secondAttribute="trailing" id="GwD-Ub-fnX"/>
                                     <constraint firstItem="X0R-Jz-5pi" firstAttribute="leading" secondItem="qD8-lc-ixY" secondAttribute="leading" constant="10" id="WZC-oY-0Pn"/>
@@ -374,6 +386,7 @@
                                     <constraint firstItem="X0R-Jz-5pi" firstAttribute="bottom" secondItem="ao3-fE-uvk" secondAttribute="bottom" constant="-10" id="qxw-be-LVA"/>
                                     <constraint firstItem="aBa-vE-ymE" firstAttribute="centerX" secondItem="qD8-lc-ixY" secondAttribute="centerX" id="sYH-cl-r5e"/>
                                     <constraint firstItem="2oY-Ig-ocv" firstAttribute="width" secondItem="qD8-lc-ixY" secondAttribute="width" id="vqa-xQ-HmL"/>
+                                    <constraint firstAttribute="trailing" secondItem="kgx-6G-DNh" secondAttribute="trailing" constant="10" id="wXJ-w6-e01"/>
                                 </constraints>
                             </view>
                         </subviews>

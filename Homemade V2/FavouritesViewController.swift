@@ -14,7 +14,7 @@ import UIKit
 
 
 //let model = Model.sharedInstance
-let favourites = model.allFavourites.favourites
+//let favourites = model.allFavourites.favourites
 //
 //protocol Refresh
 //{
@@ -28,6 +28,7 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var placeHolder: UIView!
     @IBOutlet weak var tableView: UITableView!
     var tblIndex = 0
+	var favourites:[Recipe]? = nil
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -95,6 +96,8 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		favourites = model.popuateFavourites()
+		
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()

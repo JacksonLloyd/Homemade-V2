@@ -22,7 +22,8 @@ let RECIPE_DETAILS:String = "recipe/"
 let API_KEY:String = "_app_key=04689cd3a2a696e426bc2aa144f4e925"
 let APP_ID:String = "_app_id=f9d0a582"
 let APP_API:String = "?" + APP_ID + "&" + API_KEY
-var ID_LENGTH:Int = 4
+var START:Int = 0
+let STARTSTR = "start="
 //let movieTitle:String = txtMovieTitle.text!.escapedParameters()
 
 protocol Refresh
@@ -44,10 +45,9 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     let session = URLSession.shared
     var searchActive:Bool = false
     
-    
     func allRecipesAPI()
     {
-        let getAllRecipes = BASE_URL + ALL_RECIPES + APP_API
+        let getAllRecipes = BASE_URL + ALL_RECIPES + APP_API + STARTSTR + String(START)
         if let url = URL(string: getAllRecipes)
         {
             let request = URLRequest(url: url)
@@ -173,6 +173,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		model.databaseSetup()
         // Do any additional setup after loading the view, typically from a nib.
         allRecipesAPI()
 		
@@ -184,6 +185,10 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
+		if tableView.contentOffset.y >= (tableView.contentSize.height - tableView.frame.size.height) {
+			
+			//you reached end of the table
+		}
     }
 	
     func back(){
