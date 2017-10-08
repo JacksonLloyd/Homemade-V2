@@ -11,6 +11,12 @@ import UIKit
 
 extension String {
 
+	func replaceSpaceWithPlus(input: String) -> String {
+		var output:String
+		output = input.replacingOccurrences(of: " ", with: "+")
+		return output
+	}
+	
     func escapedParameters() -> String {
 
         var urlVars = [String]()

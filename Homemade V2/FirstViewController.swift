@@ -43,7 +43,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     var filtered:[String] = []
     //var recipes:[Recipe]?
     let session = URLSession.shared
-    var searchActive:Bool = false
+    var searchString:String = ""
+	var searching:Bool = false
     
     func allRecipesAPI()
     {
@@ -133,8 +134,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 						
 						recipe!.id = (parsedResult["id"] as? String)!
 						recipe!.name = (parsedResult["name"] as? String)!
-						recipe!.timeTotal = (parsedResult["totalTimeInSeconds"] as? Int)!
-						recipe!.rating = (parsedResult["rating"] as? Double)!
+						recipe!.timeTotal = (parsedResult["totalTimeInSeconds"] as? Int ?? 0)!
+						recipe!.rating = (parsedResult["rating"] as? Double ?? 0)!
 						
 						if let imageURL = parsedResult["images"] as? [[String: AnyObject]] {
 							let lrgImage = imageURL[0]
@@ -142,7 +143,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 						}
 						
 						if let source = parsedResult["source"] as? [String:AnyObject] {
-							let sourceURL = source["sourceRecipeUrl"]
 							recipe!.sourceURL = (source["sourceRecipeUrl"]! as? String)!
 						}
 						
@@ -199,39 +199,44 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     /**
      * Search bar functions
      */
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchActive = true
-    }
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchActive = false
+        searchBar.endEditing(true)
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchActive = false
+		recipes? = []
+		self.searching = true
+		searchBar.endEditing(true)
+		
+		let searchStr:String = self.searchString.replaceSpaceWithPlus(input: self.searchString)
+		let searchRecipes = BASE_URL + ALL_RECIPES + APP_API + "&q=" + searchStr
+		if let url = URL(string: searchRecipes) {
+			let request = URLRequest(url: url)
+			initialiseTaskForGettingData(request, element: "results")
+		}
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchActive = false
+		recipes? = []
+		allRecipesAPI()
+		searching = false
+        searchBar.endEditing(true)
     }
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         searchBar.endEditing(true)
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        
-        if(filtered.count == 0){
-            searchActive = false;
-        } else {
-            searchActive = true;
-        }
+		self.searchString = searchText
+		self.searching = false
     }
 	
 	/**
-	 *
-	 *
+	 * if at the bottom of table and not a search, then get more
 	 */
 	func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-		if indexPath.row + 1 == (recipes?.count)! && (recipes?.count)! > 9{
-			START += 10
-			allRecipesAPI()
+		if indexPath.row + 1 == (recipes?.count)! && (recipes?.count)! > 9 {
+			if START < 1600000 && searching != true {
+				START += 10
+				allRecipesAPI()
+			}
 		}
 	}
 	
