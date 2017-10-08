@@ -21,7 +21,6 @@
 		094FFF6B1F4A9B9E004866BC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094FFF6A1F4A9B9E004866BC /* Model.swift */; };
 		094FFF6D1F4AB5DE004866BC /* AllRecipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094FFF6C1F4AB5DE004866BC /* AllRecipes.swift */; };
 		09B462531F80D9DC001746DD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B462521F80D9DC001746DD /* Extensions.swift */; };
-		09BB73DA1F5D40BF000E084E /* FeatureCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB73D91F5D40BF000E084E /* FeatureCollectionView.swift */; };
 		09EB671B1F592BB50019B662 /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB671A1F592BB50019B662 /* FavouritesViewController.swift */; };
 		09EB671D1F5964070019B662 /* FavouritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB671C1F5964070019B662 /* FavouritesCell.swift */; };
 		09EB671F1F5B953E0019B662 /* TimeTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EB671E1F5B953E0019B662 /* TimeTableController.swift */; };
@@ -91,7 +90,6 @@
 		094FFF6A1F4A9B9E004866BC /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		094FFF6C1F4AB5DE004866BC /* AllRecipes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllRecipes.swift; sourceTree = "<group>"; };
 		09B462521F80D9DC001746DD /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		09BB73D91F5D40BF000E084E /* FeatureCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureCollectionView.swift; sourceTree = "<group>"; };
 		09EB671A1F592BB50019B662 /* FavouritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 		09EB671C1F5964070019B662 /* FavouritesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesCell.swift; sourceTree = "<group>"; };
 		09EB671E1F5B953E0019B662 /* TimeTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTableController.swift; sourceTree = "<group>"; };
@@ -216,7 +214,6 @@
 				7DC0724B1F83AB9A00005893 /* ShoppingList controllers */,
 				7DC0724C1F83ABA400005893 /* Favourites controllers */,
 				7DC072471F83AB5500005893 /* Review Controllers */,
-				09BB73D91F5D40BF000E084E /* FeatureCollectionView.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -505,7 +502,6 @@
 				0905EE321F4C76A4003BF228 /* AllShoppingList.swift in Sources */,
 				7D6F0BCA1F414FA3003F60BE /* AppDelegate.swift in Sources */,
 				0905EE301F4C5D99003BF228 /* MealSceneController.swift in Sources */,
-				09BB73DA1F5D40BF000E084E /* FeatureCollectionView.swift in Sources */,
 				7DFEF9431F56F31600850359 /* ShoppingListViewController.swift in Sources */,
 				7D6F0BCC1F414FA3003F60BE /* FirstViewController.swift in Sources */,
 				090D43D41F70C6230003C6D4 /* FMDatabaseAdditions.m in Sources */,

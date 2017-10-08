@@ -25,10 +25,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
 	
 	
 	@IBAction func faveBtn(_ sender: Any) {
-//		let image = UIImage(named: "ratingStarFilled") as UIImage!
-//		self.faveBtn.setImage(image, forState: .Normal)
-		
-		
+		model.saveFavourites(favourite: recip)
 	}
     
     // returns cell in tableView of ingredients to be displayed

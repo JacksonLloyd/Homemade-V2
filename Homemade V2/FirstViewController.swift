@@ -258,7 +258,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         //assign label and image
         cell.mealLabel.text = recipes?[indexPath.row].name
-        
+		
+		//sets cell's image to url and loads the url in Extensions
         let url = recipes?[indexPath.row].image!
 		cell.mealImage.loadImageUsingUrlString(urlString: url!)
 

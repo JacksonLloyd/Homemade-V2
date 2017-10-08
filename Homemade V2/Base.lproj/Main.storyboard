@@ -361,8 +361,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgx-6G-DNh">
-                                        <rect key="frame" x="354" y="50" width="50" height="50"/>
+                                        <rect key="frame" x="354" y="10" width="50" height="50"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="Moe-8B-hU2"/>
                                             <constraint firstAttribute="height" constant="50" id="vtY-CL-Xfp"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="favourites "/>
@@ -373,10 +374,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="kgx-6G-DNh" firstAttribute="top" secondItem="ao3-fE-uvk" secondAttribute="bottom" constant="-50" id="2bI-hn-Kh4"/>
                                     <constraint firstItem="2oY-Ig-ocv" firstAttribute="centerX" secondItem="qD8-lc-ixY" secondAttribute="centerX" id="2dZ-Rc-aa3"/>
                                     <constraint firstItem="aBa-vE-ymE" firstAttribute="width" secondItem="qD8-lc-ixY" secondAttribute="width" id="2uS-k1-ex1"/>
-                                    <constraint firstItem="kgx-6G-DNh" firstAttribute="leading" secondItem="qD8-lc-ixY" secondAttribute="leading" constant="354" id="2ym-RN-ZGq"/>
                                     <constraint firstItem="9rL-Wr-2h3" firstAttribute="width" secondItem="qD8-lc-ixY" secondAttribute="width" id="BQ4-0S-0JS"/>
                                     <constraint firstAttribute="trailing" secondItem="X0R-Jz-5pi" secondAttribute="trailing" id="GwD-Ub-fnX"/>
                                     <constraint firstItem="X0R-Jz-5pi" firstAttribute="leading" secondItem="qD8-lc-ixY" secondAttribute="leading" constant="10" id="WZC-oY-0Pn"/>
@@ -387,6 +386,7 @@
                                     <constraint firstItem="aBa-vE-ymE" firstAttribute="top" secondItem="2oY-Ig-ocv" secondAttribute="bottom" id="eeB-IZ-2eG"/>
                                     <constraint firstItem="9rL-Wr-2h3" firstAttribute="top" secondItem="aBa-vE-ymE" secondAttribute="bottom" id="lsn-Su-YWO"/>
                                     <constraint firstItem="X0R-Jz-5pi" firstAttribute="bottom" secondItem="ao3-fE-uvk" secondAttribute="bottom" constant="-10" id="qxw-be-LVA"/>
+                                    <constraint firstItem="kgx-6G-DNh" firstAttribute="top" secondItem="qD8-lc-ixY" secondAttribute="top" constant="10" id="rUM-5H-aTS"/>
                                     <constraint firstItem="aBa-vE-ymE" firstAttribute="centerX" secondItem="qD8-lc-ixY" secondAttribute="centerX" id="sYH-cl-r5e"/>
                                     <constraint firstItem="2oY-Ig-ocv" firstAttribute="width" secondItem="qD8-lc-ixY" secondAttribute="width" id="vqa-xQ-HmL"/>
                                     <constraint firstAttribute="trailing" secondItem="kgx-6G-DNh" secondAttribute="trailing" constant="10" id="wXJ-w6-e01"/>
@@ -810,64 +810,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dBX-O2-uio" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3971.0144927536235" y="286.95652173913044"/>
-        </scene>
-        <!--Collection View Controller-->
-        <scene sceneID="fEU-k4-2WQ">
-            <objects>
-                <collectionViewController id="j7f-ju-DHR" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="etw-Ut-IKc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Gua-cA-Hkw">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="fBw-JH-3DC">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </view>
-                            </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="szf-g2-L1k">
-                                <rect key="frame" x="60.666666666666664" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </view>
-                            </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="shm-KC-V8A">
-                                <rect key="frame" x="121.33333333333333" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </view>
-                            </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="BBs-9j-o9B">
-                                <rect key="frame" x="182" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="j7f-ju-DHR" id="Fdf-L3-J3e"/>
-                            <outlet property="delegate" destination="j7f-ju-DHR" id="5he-cI-BwB"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2s1-39-VsU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4386" y="1526"/>
         </scene>
         <!--Second View Controller-->
         <scene sceneID="wg7-f3-ORb">
@@ -1409,6 +1351,6 @@
         <image name="skill_level " width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vfG-Nb-uAr"/>
+        <segue reference="J0x-3W-ml9"/>
     </inferredMetricsTieBreakers>
 </document>

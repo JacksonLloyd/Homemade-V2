@@ -15,11 +15,15 @@ class Model
     var allShoppingList:AllShoppingList
     var allFavourites:Favourites
     var uuid:String
-    
-    //let insertFave = "INSERT INTO favourites (uuid, recipeID, name, image, timeTotal, rating, sourceURL) VALUES ('\(uuid)', '\(specieDetail.commonNameFR)', '\(specieDetail.commonNameES)', '\(specieDetail.commonNameDE)', '\(specieDetail.userNotes)');"
+	
     var databasePath = NSString()
-    
-    /* Here we use a Struct to hold the instance of the model i.e itself*/
+	
+	// Create the database
+	let filemgr = FileManager.default
+	let dirPaths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+	
+	
+    /*instance of itself*/
     private struct Static
     {
         static var instance: Model?
@@ -46,17 +50,8 @@ class Model
     }
 	
 	func databaseSetup () {
-		var databasePath = NSString()
-		// Create the database
-		let filemgr = FileManager.default
-		let dirPaths =
-			NSSearchPathForDirectoriesInDomains(.documentDirectory,
-			                                    .userDomainMask, true)
-		
 		let docsDir = dirPaths[0]
-		
-		databasePath = (docsDir as NSString).appendingPathComponent(
-			"recipesdb.db") as NSString
+		databasePath = (docsDir as NSString).appendingPathComponent("recipesdb.db") as NSString
 		print(databasePath)
 		
 		if !filemgr.fileExists(atPath: databasePath as String)
@@ -109,6 +104,9 @@ class Model
 	}
 	
 	func saveFavourites(favourite: Recipe) {
+		let docsDir = dirPaths[0]
+		databasePath = (docsDir as NSString).appendingPathComponent("recipesdb.db") as NSString
+		
 		let recipesDB = FMDatabase(path: databasePath as String)
 		
 		if (recipesDB?.open())!
@@ -141,7 +139,10 @@ class Model
 	}
 	
 	func popuateFavourites() -> [Recipe]? {
-		var tempFavourites:[Recipe]? = nil
+		let docsDir = dirPaths[0]
+		databasePath = (docsDir as NSString).appendingPathComponent("recipesdb.db") as NSString
+		
+		var tempFavourites:[Recipe]? = []
 		// Get a reference to the database
 		let recipesDB = FMDatabase(path: databasePath as String)
 	
@@ -159,9 +160,12 @@ class Model
 			let querySQL = "SELECT * FROM favourites"// WHERE uuid = '\(uuid)'"
 	
 			let results:FMResultSet? = recipesDB?.executeQuery(querySQL, withArgumentsIn: nil)
-	
-			if results?.next() == true && results != nil {
-				recipe?.id = (results?.string(forColumn: "id")!)!
+			
+			if results == nil {
+				return nil
+			}
+			while (results?.next())! {
+				recipe?.id = (results?.string(forColumn: "recipeID")!)!
 				recipe?.name = (results?.string(forColumn: "name")!)!
 				recipe?.image = (results?.string(forColumn: "image")!)!
 				recipe?.ingredients = popuateFavouriteIngredients(recipeID: (recipe?.id)!)
@@ -169,21 +173,21 @@ class Model
 				recipe?.rating = (results?.double(forColumn: "rating"))!
 				recipe?.sourceURL = (results?.string(forColumn: "sourceURL")!)!
 				tempFavourites?.append(recipe!)
-			} else {
-				print("Error: Unknown")
-				return nil
 			}
 			recipesDB?.close()
 		} else {
 			print("Error: \(recipesDB?.lastErrorMessage())")
 		}
+		
 		return tempFavourites!
 	}
 	
 	func popuateFavouriteIngredients(recipeID:String) -> [String]? {
+		let docsDir = dirPaths[0]
+		databasePath = (docsDir as NSString).appendingPathComponent("recipesdb.db") as NSString
 		// Get a reference to the database
 		let recipesDB = FMDatabase(path: databasePath as String)
-		var tempIngredients:[String] = [String]()
+		var tempIngredients:[String]? = []
 		
 		if (recipesDB?.open())!
 		{
@@ -195,17 +199,17 @@ class Model
 			let results:FMResultSet? = recipesDB?.executeQuery(querySQL,
 			                                                   withArgumentsIn: nil)
 			
-			if results?.next() == true {
+			while (results?.next())! {
 				tempIng? = (results?.string(forColumn: "ingredient")!)!
-				tempIngredients.append(tempIng!)
-			} else {
-				print("Error: Unknown")
+				if tempIng != nil {
+					tempIngredients?.append(tempIng!)
+				}
 			}
 			recipesDB?.close()
 		} else {
 			print("Error: \(recipesDB?.lastErrorMessage())")
 		}
 		
-		return tempIngredients
+		return tempIngredients!
 	}
 }

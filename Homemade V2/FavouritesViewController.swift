@@ -9,17 +9,7 @@
 import Foundation
 import UIKit
 
-// initialised outside of class so that RecipeViewController can access
-// Property referencing the model for managing data and business logic
-
-
-//let model = Model.sharedInstance
 //let favourites = model.allFavourites.favourites
-//
-//protocol Refresh
-//{
-//    func refresh(recipe:Recipe)s
-//}
 
 class FavouritesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // Property referencing the label in the view
@@ -27,27 +17,22 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var imgCard: UIImageView!
     @IBOutlet weak var placeHolder: UIView!
     @IBOutlet weak var tableView: UITableView!
+	//variables
     var tblIndex = 0
 	var favourites:[Recipe]? = nil
     
-    
+    //sets tableView's number of sections
     func numberOfSections(in tableView: UITableView) -> Int {
-        if favourites == nil {
-            return 0
-        }
-        return favourites!.count
+        return favourites?.count ?? 0
     }
     
-    
+    //sets amount of favourite cells, if none save, returns 0
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        if favourites == nil {
-            return 0
-        }
-        return favourites!.count
+        return favourites?.count ?? 0
     }
-    
+	
+	//sets tableView's headers
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "favSectionHeader") as! FavouritesSectionHeaderTableViewCell
         
         if (section == 0) {
@@ -65,21 +50,18 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
 
     // returns cell in tableView of recipes
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        if favourites == nil {
-            
-        }
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "favouritesCell", for: indexPath) as! FavouritesCell
-        
-        //assign label and image
-        cell.mealLabel.text = favourites?[indexPath.row].name
-        cell.mealImage.image = UIImage(named: (favourites?[indexPath.row].name)!)
+		
+		//assign label and image
+		cell.mealLabel.text = favourites?[indexPath.row].name
+		
+		//sets cell's image to url and loads the url in Extensions
+		let url = favourites?[indexPath.row].image!
+		cell.mealImage.loadImageUsingUrlString(urlString: url!)
         
         //puts image to the back
         cell.mealImage.layer.zPosition = -5;
-        
-        /* add gradient over image*/
-        cell.mealImage.image = imageWithGradient(img: cell.mealImage.image)
+		
         return(cell)
     }
     
@@ -88,6 +70,7 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
         tblIndex = indexPath.row
         performSegue(withIdentifier: "favouriteToMealSegue", sender: self)
     }
+	// sets next scene's recipe on user's selection
     override func prepare(for segue:UIStoryboardSegue, sender: Any?){
         if let destination = segue.destination as? MealSceneController {
             destination.recip = favourites?[tblIndex]
@@ -97,25 +80,16 @@ class FavouritesViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
 		favourites = model.popuateFavourites()
+		//DispatchQueue.main.async(execute: {self.tableView.reloadData()})
 		
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.tableView.estimatedSectionHeaderHeight = 10
-        
-//        // Create the database
-//        let filemgr = FileManager.default
-//        let dirPaths =
-//            NSSearchPathForDirectoriesInDomains(.documentDirectory,
-//                                                .userDomainMask, true)
-//        
-//        let docsDir = dirPaths[0]
-//        
-//        databasePath = (docsDir as NSString).appendingPathComponent(
-//            "recipesdb.db") as NSString
     }
-    
+	
+	// setting up back button animation
     func back(){
         self.navigationController?.popViewController(animated: true)
     }
