@@ -166,7 +166,7 @@ class Model
 				recipe?.image = (results?.string(forColumn: "image")!)!
 				recipe?.ingredients = popuateFavouriteIngredients(recipeID: (recipe?.id)!)
 				recipe?.timeTotal = Int((results?.int(forColumn: "timeTotal"))!)
-				recipe?.rating = Int((results?.int(forColumn: "rating"))!)
+				recipe?.rating = (results?.double(forColumn: "rating"))!
 				recipe?.sourceURL = (results?.string(forColumn: "sourceURL")!)!
 				tempFavourites?.append(recipe!)
 			} else {
