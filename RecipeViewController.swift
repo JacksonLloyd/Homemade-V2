@@ -85,7 +85,7 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     
     // add recipe ingredients to shopping list
     @IBAction func addToShoppingListButton(_ sender: Any) {
-        let newItem = ShoppingList(name: recip.name, ingredients: recip.ingredients)
+		let newItem = ShoppingList(recipeID: recip.id, name: recip.name, ingredients: recip.ingredients)
         shoppingList.addToShoppingList(newItem: newItem)
     }
     

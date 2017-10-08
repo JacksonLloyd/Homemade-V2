@@ -9,20 +9,22 @@
 import Foundation
 
 class ShoppingList{
-    //var recipeID:String
+    var recipeID:String
     var name:String
     var ingredients:[String]?
     
-    init(name:String, ingredients:[String]?){
+    init(recipeID:String, name:String, ingredients:[String]?){
+		self.recipeID = recipeID
         self.name = name
         self.ingredients = ingredients
     }
     
-    init?(name:String, ingredients:[String]){
-        if name.isEmpty{
+    init?(recipeID:String, name:String, ingredients:[String]){
+		if name.isEmpty || recipeID.isEmpty{
             return nil
         }
-        
+		
+		self.recipeID = recipeID
         self.name = name
         self.ingredients = ingredients
     }

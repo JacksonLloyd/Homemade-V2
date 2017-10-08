@@ -14,17 +14,17 @@ struct AllShoppingList{
     var shopList:[ShoppingList]?
     
     //dummy data
-    let item1 = ShoppingList(name:"Greek Pasta", ingredients:["flour","eggs","milk"])
+	let item1 = ShoppingList(recipeID: "r01", name:"Greek Pasta", ingredients:["flour","eggs","milk"])
     
-    let item2 = ShoppingList(name:"Ultimate Bacon Burger", ingredients:["cheese","lettuce","almonds", "30g butter"])
+    let item2 = ShoppingList(recipeID: "r02", name:"Ultimate Bacon Burger", ingredients:["cheese","lettuce","almonds", "30g butter"])
     
-    let item3 = ShoppingList(name:"Sweet Cake", ingredients:["potato","chicken","rice", "loaf of bread"])
+    let item3 = ShoppingList(recipeID: "r03", name:"Sweet Cake", ingredients:["potato","chicken","rice", "loaf of bread"])
     
-    let item4 = ShoppingList(name:"Custard Donut", ingredients:["flour","eggs","milk", "5 tablespoons canola oil"])
+    let item4 = ShoppingList(recipeID: "r04", name:"Custard Donut", ingredients:["flour","eggs","milk", "5 tablespoons canola oil"])
     
-    let item5 = ShoppingList(name:"Italian Meatballs", ingredients:["cheese","1/4 cup rice wine or white wine", "lettuce","almonds"])
+    let item5 = ShoppingList(recipeID: "r05", name:"Italian Meatballs", ingredients:["cheese","1/4 cup rice wine or white wine", "lettuce","almonds"])
     
-    let item6 = ShoppingList(name:"Gyros Platter", ingredients:["1 red onion, peeled and thinly sliced (about 2 cups)", "potato","chicken","rice"])
+    let item6 = ShoppingList(recipeID: "r06", name:"Gyros Platter", ingredients:["1 red onion, peeled and thinly sliced (about 2 cups)", "potato","chicken","rice"])
     
     init()
     {
