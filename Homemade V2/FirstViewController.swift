@@ -47,7 +47,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func allRecipesAPI()
     {
-        let getAllRecipes = BASE_URL + ALL_RECIPES + APP_API + STARTSTR + String(START)
+        let getAllRecipes = BASE_URL + ALL_RECIPES + APP_API + "&" + STARTSTR + String(START)
         if let url = URL(string: getAllRecipes)
         {
             let request = URLRequest(url: url)
@@ -128,8 +128,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 					do
 					{
 						let parsedResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! [String:AnyObject]
-						
-						//recipe = Recipe()
+
 						var ingredientsArray:[String]? = []
 						
 						recipe!.id = (parsedResult["id"] as? String)!
@@ -162,7 +161,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 						fatalError()
 					}
 				}
-				//print(recipes!)
 				DispatchQueue.main.async(execute: {self.tableView.reloadData()})
 			})
 			task.resume()
@@ -185,10 +183,8 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
-		if tableView.contentOffset.y >= (tableView.contentSize.height - tableView.frame.size.height) {
-			
-			//you reached end of the table
-		}
+		
+		
     }
 	
     func back(){
@@ -227,15 +223,30 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             searchActive = true;
         }
     }
-    
+	
+	/**
+	 *
+	 *
+	 */
+	func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+		if indexPath.row + 1 == (recipes?.count)! && (recipes?.count)! > 9{
+			START += 10
+			allRecipesAPI()
+		}
+	}
+	
     /**
      * Table Setup
+	 * returns amount of table cells
      */
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return recipes?.count ?? 0
     }
     
-    // returns cell in tableView of recipes
+    /**
+	 * sets recipe images, recipe name and gradient over the images
+	 * returns cell to tableView
+	 */
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FirstViewControllerTableViewCell
@@ -257,6 +268,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableIndex = indexPath.row
         performSegue(withIdentifier: "featureToMealSegue", sender: self)
     }
+	// if a cell is clicked, this function will pass the recipe that is clicked to the next view
     override func prepare(for segue:UIStoryboardSegue, sender: Any?){
         if let destination = segue.destination as? MealSceneController {
             destination.recip = recipes?[tableIndex]
