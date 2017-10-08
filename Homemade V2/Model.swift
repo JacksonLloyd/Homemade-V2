@@ -10,10 +10,13 @@ import Foundation
 
 class Model
 {
-    var startingRecipe = Recipe.recipe1;
     var allRecipes:AllRecipes
     var allShoppingList:AllShoppingList
-    var allFavourites:AllRecipes
+    var allFavourites:Favourites
+    var uuid:String
+    
+    //let insertFave = "INSERT INTO favourites (uuid, recipeID, name, image, timeTotal, rating, sourceURL) VALUES ('\(uuid)', '\(specieDetail.commonNameFR)', '\(specieDetail.commonNameES)', '\(specieDetail.commonNameDE)', '\(specieDetail.userNotes)');"
+    var databasePath = NSString()
     
     /* Here we use a Struct to hold the instance of the model i.e itself*/
     private struct Static
@@ -36,7 +39,38 @@ class Model
     {
         allRecipes = AllRecipes()
         allShoppingList = AllShoppingList()
-        allFavourites = AllRecipes()
+        allFavourites = Favourites()!
+        uuid = UUID().uuidString
+    }
+    
+    func retrieveFavourites(){
+        let getFaves = "SELECT * FROM favourites WHERE uuid = '\(uuid)';"
+        
+        // Get a reference to the database
+//        let recipesDB = FMDatabase(path: databasePath as String)
+//        
+//        if (recipesDB?.open())!
+//        {
+//            // Prepare a statement for operating on the database
+//            let querySQL = "SELECT address, phone FROM CONTACTS WHERE name = '\(name.text!)'"
+//            
+//            let results:FMResultSet? = recipesDB?.executeQuery(querySQL,
+//                                                               withArgumentsIn: nil)
+//            
+//            if results?.next() == true {
+//                address.text = results?.string(forColumn: "address")!
+//                phone.text = results?.string(forColumn: "phone")!
+//                status.text = "Record Found"
+//            } else {
+//                status.text = "Record not found"
+//                address.text = ""
+//                phone.text = ""
+//            }
+//            recipesDB?.close()
+//        } else {
+//            print("Error: \(recipesDB?.lastErrorMessage())")
+//        }
+        
     }
     
     

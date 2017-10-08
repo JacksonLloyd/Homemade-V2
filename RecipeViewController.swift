@@ -39,9 +39,8 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         nameLabel.text = recip.name
-        totalTimeLabel.text = "Total time: \(recip.timeTotal) mins"
-        recipeImage.image = UIImage(named: recip.imageName)
-        recipeImage.image = imageWithGradient(img: recipeImage.image)
+        totalTimeLabel.text = "Total time: \(recip.timeTotal! / 60) mins"
+		recipeImage.loadImageUsingUrlString(urlString: recip.image!)
 
         tableView.backgroundView = nil;
         // reloads table data
@@ -71,27 +70,23 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     @IBAction func Ratings(_ sender: Any) {
         performSegue(withIdentifier: "reviewSegue", sender: self)
     }
+    
     override func prepare(for segue:UIStoryboardSegue, sender: Any?){
-        if let destination = segue.destination as? ReviewViewController {
+        if let destination = segue.destination as? RatingViewController {
             destination.recip = recip
         }
     }
     
-    
-    // back button to feature view
-    @IBAction func unwindToFeature(segue:UIStoryboardSegue){
-    }
-    
     // add recipe ingredients to shopping list
     @IBAction func addToShoppingListButton(_ sender: Any) {
-        let newItem = ShoppingList(recipeName: recip.name, ingredients: recip.ingredients)
+        let newItem = ShoppingList(name: recip.name, ingredients: recip.ingredients)
         shoppingList.addToShoppingList(newItem: newItem)
     }
     
     
     // view directions button (Action) - opens recipe sourceURL in Safari
     @IBAction func directionsButton(_ sender: Any) {
-        let svc = SFSafariViewController(url: URL(string: recip.sourceURL)!)
+        let svc = SFSafariViewController(url: URL(string: recip.sourceURL!)!)
         self.present(svc, animated: true, completion: nil)
     }
 }

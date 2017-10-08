@@ -9,33 +9,48 @@
 import Foundation
 
 class Favourites {
-//    var favourites:[Recipe]?
-//    
-//    init()
-//    {
-//        // Create an array populate with one of each recipe
-//        favourites = Favourites.getFavourites()
-//    }
-//    
-//    mutating func getFavourites() -> [Recipe]
-//    {
-//        for fave in recipes {
-//            if fave.favourite == true {
-//                favourites?.append(fave)
-//            }
-//            else {
-//                continue
-//            }
-//        }
-//    return favourites!
-//    }
-//    
-//    func addFavourites() ->[Recipe]{
-//        favourites!.append("")
-//    }
-//    func removeFavourites() ->[Recipe]{
-//        return favourites!
-//    }
+    var favourites:[Recipe]?
+    
+    init?() {
+        favourites = getFavourites()
+    }
+    
+    func getFavourites() -> [Recipe]?
+    {
+        return favourites
+    }
+    
+    /* adds new item to favourites,
+        returns false if new recipe is already in favourites
+        returns true if recipe is added into favourites correctly
+     */
+    func addFavourite(recipe:Recipe) -> Bool
+    {
+        //needs check for already added
+        for (_, item) in favourites!.enumerated()
+        {
+            if item.id == recipe.id{
+                return false
+            }
+        }
+        
+        favourites?.append(recipe)
+        return true
+    }
+    
+    /* removes item from favourites,
+        returns false if favourite could not be removed
+        returns true if favourite is removed from favourites correctly
+     */
+    func removeFavourite(recipe:Recipe) -> Bool
+    {
+        for (index, item) in favourites!.enumerated()
+        {
+            if item.id == recipe.id{
+                favourites?.remove(at: index)
+                return true
+            }
+        }
+        return false
+    }
 }
-
-

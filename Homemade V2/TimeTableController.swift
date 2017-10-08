@@ -12,9 +12,9 @@ import UIKit
 // initialised outside of class so that RecipeViewController can access
 // Property referencing the model for managing data and business logic
 
-let short = model.allFavourites.shortTime
-let med = model.allFavourites.mediumTime
-let long = model.allFavourites.longTime
+let short = model.allRecipes.shortTime
+let med = model.allRecipes.mediumTime
+let long = model.allRecipes.longTime
 
 class TimeTableController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // Property referencing the label in the view
