@@ -12,7 +12,8 @@ import UIKit
 // Property referencing the model for managing data and business logic
 var tableIndex = 0
 let model = Model.sharedInstance
-// var recipes = model.allRecipes.getRecipes()
+//var recipes = model.allRecipes.getRecipes()
+var recipes:[Recipe]? = []
 
 // Constants for building various url requests to the service
 let BASE_URL: String = "http://api.yummly.com/v1/api/"
@@ -21,7 +22,8 @@ let RECIPE_DETAILS:String = "recipe/"
 let API_KEY:String = "_app_key=04689cd3a2a696e426bc2aa144f4e925"
 let APP_ID:String = "_app_id=f9d0a582"
 let APP_API:String = "?" + APP_ID + "&" + API_KEY
-var ID_LENGTH:Int = 4
+var START:Int = 0
+let STARTSTR = "start="
 //let movieTitle:String = txtMovieTitle.text!.escapedParameters()
 
 protocol Refresh
@@ -39,14 +41,13 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBOutlet weak var imgCard: UIImageView!
     @IBOutlet weak var placeHolder: UIView!
     var filtered:[String] = []
-    var recipes:[Recipe]?
+    //var recipes:[Recipe]?
     let session = URLSession.shared
     var searchActive:Bool = false
     
-    
     func allRecipesAPI()
     {
-        let getAllRecipes = BASE_URL + ALL_RECIPES + APP_API
+        let getAllRecipes = BASE_URL + ALL_RECIPES + APP_API + STARTSTR + String(START)
         if let url = URL(string: getAllRecipes)
         {
             let request = URLRequest(url: url)
@@ -70,14 +71,12 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
             {
                 do
                 {
-                    self.recipes = [Recipe]()
                     // Convert the http response payload to JSON.
                     let parsedResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! [String:Any]
                     
                     let data = parsedResult["matches"] as! [[String: AnyObject]]
                     
 					DispatchQueue.main.async(execute: {self.getRecipeDetails(data)})
-					//self.tableView.reloadData()
                 }
                 catch let error as NSError
                 {
@@ -94,7 +93,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 	
     func getRecipeDetails(_ data: [[String: AnyObject]])
     {
-		self.recipes = [Recipe]()
+		//recipes! = [Recipe]()
 		
 		for item in data
 		{
@@ -130,7 +129,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 					{
 						let parsedResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments) as! [String:AnyObject]
 						
-						//self.recipe = Recipe()
+						//recipe = Recipe()
 						var ingredientsArray:[String]? = []
 						
 						recipe!.id = (parsedResult["id"] as? String)!
@@ -155,7 +154,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 						}
 						recipe!.ingredients = ingredientsArray!
 						
-						self.recipes!.append(recipe!)
+						recipes!.append(recipe!)
 					} catch var error as NSError {
 						parsingError = error
 					}
@@ -163,7 +162,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 						fatalError()
 					}
 				}
-				print(self.recipes!)
+				//print(recipes!)
 				DispatchQueue.main.async(execute: {self.tableView.reloadData()})
 			})
 			task.resume()
@@ -174,6 +173,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		model.databaseSetup()
         // Do any additional setup after loading the view, typically from a nib.
         allRecipesAPI()
 		
@@ -185,6 +185,10 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
+		if tableView.contentOffset.y >= (tableView.contentSize.height - tableView.frame.size.height) {
+			
+			//you reached end of the table
+		}
     }
 	
     func back(){
@@ -240,8 +244,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         cell.mealLabel.text = recipes?[indexPath.row].name
         
         let url = recipes?[indexPath.row].image!
-
-		
 		cell.mealImage.loadImageUsingUrlString(urlString: url!)
 
         //puts image to the back

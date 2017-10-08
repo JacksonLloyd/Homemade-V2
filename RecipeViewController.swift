@@ -11,6 +11,7 @@ import SafariServices
 
 class RecipeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var recip:Recipe!
+	
     //properties
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -21,6 +22,14 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return (recip.ingredients!.count+1)
     }
+	
+	
+	@IBAction func faveBtn(_ sender: Any) {
+//		let image = UIImage(named: "ratingStarFilled") as UIImage!
+//		self.faveBtn.setImage(image, forState: .Normal)
+		
+		
+	}
     
     // returns cell in tableView of ingredients to be displayed
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
