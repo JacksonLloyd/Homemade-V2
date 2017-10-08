@@ -11,13 +11,15 @@ import UIKit
 
 
 class RatingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var lblAnswers: UILabel!
-    @IBOutlet weak var imgCard: UIImageView!
-    @IBOutlet weak var placeHolder: UIView!
+	var recip:Recipe!
+	
+//    @IBOutlet weak var lblAnswers: UILabel!
+//    @IBOutlet weak var imgCard: UIImageView!
+//    @IBOutlet weak var placeHolder: UIView!
     @IBOutlet var tableView: UITableView!
-    
-    var recip:Recipe!
-    
+    @IBOutlet weak var recpLbl: UILabel!
+	@IBOutlet weak var recpImg: UIImageView!
+	
     override func viewDidAppear(_ animated: Bool) {
         self.tableView.reloadData()
     }
@@ -27,16 +29,26 @@ class RatingViewController: UIViewController, UITableViewDataSource, UITableView
         // Do any additional setup after loading the view, typically from a nib.
         tableView.delegate = self
         tableView.dataSource = self
-        
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
+		
+		recpLbl.text = String(self.recip.name)
+		//image to url and loads the url in Extensions
+		let url = self.recip.image!
+		recpImg.loadImageUsingUrlString(urlString: url)
+		
+		self.navigationItem.hidesBackButton = true
+		let backButton = UIBarButtonItem(image: UIImage(named: "backButton"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(RecipeViewController.back(sender:)))
+		self.navigationItem.leftBarButtonItem = backButton
+		self.automaticallyAdjustsScrollViewInsets = true
+		
+		self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+		self.navigationController?.navigationBar.shadowImage = UIImage()
+		self.navigationController?.navigationBar.isTranslucent = true
         self.tableView.estimatedSectionHeaderHeight = 5
     }
 
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return (recip.getRatings()?.count)!
+        return (self.recip.getRatings()?.count)!
     }
     
     /* broken code....

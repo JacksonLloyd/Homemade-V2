@@ -30,7 +30,7 @@ class Recipe{
     }
     
     init?(id:String, name:String, image:String, ingredients:[String], timeTotal:Int, rating:Double, sourceURL:String){
-        if id.isEmpty{
+		if id.isEmpty || name.isEmpty {
             return nil
         }
         

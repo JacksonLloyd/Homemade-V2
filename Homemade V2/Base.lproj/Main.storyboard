@@ -446,7 +446,7 @@
                                             <constraint firstAttribute="height" constant="170" id="ygg-Oe-EgW"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjQ-tg-caL" userLabel="Name Label">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjQ-tg-caL" userLabel="NameLabel">
                                         <rect key="frame" x="10" y="62" width="404" height="28"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -554,6 +554,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="recpImg" destination="hf5-c0-xs2" id="ri4-gH-d6R"/>
+                        <outlet property="recpLbl" destination="DjQ-tg-caL" id="nfU-oS-PWI"/>
                         <outlet property="tableView" destination="zYV-3t-P9r" id="1fc-u5-eBv"/>
                         <segue destination="aZb-R7-FZz" kind="show" identifier="submitReview" id="mtZ-ay-TPf"/>
                         <segue destination="D8A-I3-Zlc" kind="show" identifier="detailedReview" id="dA2-Oj-WOs"/>
