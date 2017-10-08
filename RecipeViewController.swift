@@ -11,6 +11,8 @@ import SafariServices
 
 class RecipeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var recip:Recipe!
+	var favourites:[Recipe]? = []
+	var isFave:Bool = false
 	
     //properties
     @IBOutlet weak var recipeImage: UIImageView!
@@ -23,9 +25,24 @@ class RecipeViewController: UIViewController, UITableViewDataSource, UITableView
         return (recip.ingredients!.count+1)
     }
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		favourites = model.popuateFavourites()
+	}
 	
 	@IBAction func faveBtn(_ sender: Any) {
-		model.saveFavourites(favourite: recip)
+		for item in favourites! {
+			if recip.id == item.id {
+				isFave = true
+			}
+		}
+		
+		if isFave {
+			model.removeFavourite(favourite: recip)
+		} else {
+			model.saveFavourites(favourite: recip)
+			favourites?.append(recip)
+		}
 	}
     
     // returns cell in tableView of ingredients to be displayed

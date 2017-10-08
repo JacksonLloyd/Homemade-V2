@@ -103,6 +103,32 @@ class Model
 		}
 	}
 	
+	
+	func removeFavourite(favourite: Recipe) {
+		let docsDir = dirPaths[0]
+		databasePath = (docsDir as NSString).appendingPathComponent("recipesdb.db") as NSString
+		// Get a reference to the database
+		let recipesDB = FMDatabase(path: databasePath as String)
+		
+		if (recipesDB?.open())!
+		{
+			let faveDelSQL = "DELETE FROM favourites WHERE recipeID = '\(favourite.id)'"
+			if !(recipesDB?.executeStatements(faveDelSQL))! {
+				print("Error: \(recipesDB?.lastErrorMessage())")
+			}
+			
+			let faveIngDelSQL = "DELETE FROM faveIngredients WHERE recipeID = '\(favourite.id)'"
+			if !(recipesDB?.executeStatements(faveIngDelSQL))! {
+				print("Error: \(recipesDB?.lastErrorMessage())")
+			}
+			
+			recipesDB?.close()
+		} else {
+			print("Error: \(recipesDB?.lastErrorMessage())")
+		}
+	}
+	
+	
 	func saveFavourites(favourite: Recipe) {
 		let docsDir = dirPaths[0]
 		databasePath = (docsDir as NSString).appendingPathComponent("recipesdb.db") as NSString
