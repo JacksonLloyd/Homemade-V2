@@ -138,11 +138,10 @@ class Homemade_V2Tests: XCTestCase {
 		
 		var image:UIImageView!
 		XCTAssertNil(image)
-		XCTAssertNil(image.image)
 		
 		let url = "https://lh3.googleusercontent.com/lw5KIRDeeqKm_AfnzvwWkYrlsb0p_cGMzt32UrMvZvqSd8pkZG_3HeHrFeN5Usnr4cw4fJCRfgv9E5WhSt6n4U0=s360"
 		image.loadImageUsingUrlString(urlString: url)
-		XCTAssertNil(image)
-		XCTAssertNil(image.image)
+		XCTAssertNotNil(image)
+		XCTAssertNotNil(image.image)
 	}
 }
